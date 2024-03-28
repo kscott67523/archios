@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @timesheet_entry %>
+
+<div>
+  <%= link_to "Edit this timesheet entry", edit_timesheet_entry_path(@timesheet_entry) %> |
+  <%= link_to "Back to timesheet entries", timesheet_entries_path %>
+
+  <%= button_to "Destroy this timesheet entry", @timesheet_entry, method: :delete %>
+</div>
