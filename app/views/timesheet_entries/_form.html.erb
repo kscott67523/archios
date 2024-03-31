@@ -1,0 +1,47 @@
+<%= form_with(model: timesheet_entry) do |form| %>
+  <% if timesheet_entry.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(timesheet_entry.errors.count, "error") %> prohibited this timesheet_entry from being saved:</h2>
+
+      <ul>
+        <% timesheet_entry.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :employee_id, style: "display: block" %>
+    <%= form.text_field :employee_id %>
+  </div>
+
+  <div>
+    <%= form.label :started_at, style: "display: block" %>
+    <%= form.datetime_field :started_at %>
+  </div>
+
+  <div>
+    <%= form.label :ended_at, style: "display: block" %>
+    <%= form.datetime_field :ended_at %>
+  </div>
+
+  <div>
+    <%= form.label :hours_worked, style: "display: block" %>
+    <%= form.text_field :hours_worked %>
+  </div>
+
+  <div>
+    <%= form.label :comments, style: "display: block" %>
+    <%= form.text_area :comments %>
+  </div>
+
+  <div>
+    <%= form.label :entry_approval_status, style: "display: block" %>
+    <%= form.text_field :entry_approval_status %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

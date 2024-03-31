@@ -107,3 +107,9 @@ group :test do
   gem "rspec-html-matchers"
   gem "webmock"
 end
+
+gem "react-rails", "~> 3.2"
+
+gem "react", "~> 0.0.2"
+
+gem "shakapacker", "= 7.2"
