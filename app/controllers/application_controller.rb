@@ -1,4 +1,14 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_employee!, only: [:show, :edit, :update, :destroy]
   skip_forgery_protection
+
+  protected
+
+  def after_sign_in_path_for(resource)
+    if resource.is_a?(Employee)
+      employee_path(resource)
+    else
+      super
+    end
+  end
 end

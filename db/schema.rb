@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_28_230710) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_04_081858) do
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.string "logo"
@@ -52,6 +52,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_28_230710) do
     t.index ["time_entry_id"], name: "index_messages_on_time_entry_id"
   end
 
+  create_table "pay_periods", force: :cascade do |t|
+    t.datetime "started_at"
+    t.datetime "ended_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "timesheet_entries", force: :cascade do |t|
     t.integer "employee_id", null: false
     t.datetime "started_at"
@@ -61,8 +68,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_28_230710) do
     t.string "entry_approval_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "pay_period_id"
     t.index ["employee_id"], name: "index_timesheet_entries_on_employee_id"
+    t.index ["pay_period_id"], name: "index_timesheet_entries_on_pay_period_id"
   end
 
   add_foreign_key "employees", "companies"
+  add_foreign_key "timesheet_entries", "pay_periods"
 end

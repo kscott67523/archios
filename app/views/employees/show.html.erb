@@ -1,10 +1,43 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <div class="row mb-4">
+    <div class="col-md-6 offset-md-3">
+      <%= render "employees/employee", employee: @employee %>
+    </div>
+  </div>
 
-<%= render @employee %>
-
-<div>
-  <%= link_to "Edit this employee", edit_employee_path(@employee) %> |
-  <%= link_to "Back to employees", employees_path %>
-
-  <%= button_to "Destroy this employee", @employee, method: :delete %>
+  <h3 class="py-3">Timesheet</h3>
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+    <% @employee.current_timesheet.each do |entry| %>
+      <div class="accordion-item" >
+        <h2 class="accordion-header">
+          <%= link_to "#collapse#{entry["id"]}", class: "accordion-button collapsed", "data-bs-toggle" => "collapse", "data-bs-target" => "#collapse#{entry["id"]}", "aria-expanded" => "false", "aria-controls" => "collapse#{entry["id"]}" do %>
+            <%= entry["started_at"].strftime("%b %d %l:%M%P") %> - <%= entry["ended_at"] ? entry["ended_at"].strftime("%l:%M%P") : "Present" %>
+            <span class="badge rounded-pill bg-<%= entry["entry_approval_status"] == "approved" ? "success" : entry["entry_approval_status"] == "submitted" ? "warning" : "danger" %> ms-2"><%= entry["entry_approval_status"] %></span>
+          <% end %>
+        </h2>
+        <div id="collapse<%= entry["id"] %>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <form id="editForm<%= entry["id"] %>">
+              <div class="mb-3">
+                <label for="startTime<%= entry["id"] %>" class="form-label">Start Time</label>
+                <input type="datetime-local" class="form-control" id="startTime<%= entry["id"] %>" name="startTime" value="<%= entry["started_at"].strftime("%Y-%m-%dT%H:%M") %>" required>
+              </div>
+              <div class="mb-3">
+                <label for="endTime<%= entry["id"] %>" class="form-label">End Time</label>
+                <input type="datetime-local" class="form-control" id="endTime<%= entry["id"] %>" name="endTime" value="<%= entry["ended_at"] ? entry["ended_at"].strftime("%Y-%m-%dT%H:%M") : "" %>">
+              </div>
+              <div class="mb-3">
+                <label for="comments<%= entry["id"] %>" class="form-label">Comments</label>
+                <textarea class="form-control" id="comments<%= entry["id"] %>" name="comments" rows="3"><%= entry["comments"] %></textarea>
+              </div>
+              <input type="hidden" id="entryId<%= entry["id"] %>" name="entryId" value="<%= entry["id"] %>">
+              <%= link_to "Save changes", "javascript:void(0)", class: "btn btn-primary", onclick: "saveChanges(<%= entry["id"] %>)" %>
+              <%= link_to "Edit", edit_timesheet_entry_path(entry), class: "btn btn-warning" %>
+              <%= link_to "Delete", entry, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+            </form>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

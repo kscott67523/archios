@@ -1,58 +1,21 @@
 <div id="<%= dom_id employee %>">
 
-  <p>
-    <strong>Email:</strong>
-    <%= employee.email %>
-  </p>
-
-  <p>
-    <strong>Password:</strong>
-    <%= employee.password %>
-  </p>
-
-  <p>
-    <strong>First name:</strong>
-    <%= employee.first_name %>
-  </p>
-
-  <p>
-    <strong>Last name:</strong>
-    <%= employee.last_name %>
-  </p>
-
-  <p>
-    <strong>Role:</strong>
-    <%= employee.role %>
-  </p>
-
-  <p>
-    <strong>Company:</strong>
-    <%= employee.company_id %>
-  </p>
-
-  <p>
-    <strong>Manager:</strong>
-    <%= employee.manager_id %>
-  </p>
-
-  <p>
-    <strong>Phone number:</strong>
-    <%= employee.phone_number %>
-  </p>
-
-  <p>
-    <strong>Has sms:</strong>
-    <%= employee.has_sms %>
-  </p>
-
-  <p>
-    <strong>Profile picture:</strong>
-   <%= image_tag employee.profile_picture %>
-  </p>
-
-  <p>
-    <strong>Time zone:</strong>
-    <%= employee.time_zone %>
-  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-body text-center">
+            <img src="<%= @employee.profile_picture %>" alt="Profile Picture" class="rounded-circle mb-3" style="width: 100px; height: 100px;">
+            <h2 class="card-title mb-3">Welcome, <%= @employee.first_name %>!</h2>
+            <p class="card-text text-muted"><%= @employee.time_zone %></p>
+            <p class="card-text"><%= @employee.role.capitalize %></p>
+            <% if @employee.manager %>
+              <p class="card-text">Manager: <%= @employee.manager.full_name %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>
