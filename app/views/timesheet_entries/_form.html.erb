@@ -1,47 +1,36 @@
-<%= form_with(model: timesheet_entry) do |form| %>
-  <% if timesheet_entry.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(timesheet_entry.errors.count, "error") %> prohibited this timesheet_entry from being saved:</h2>
+  <% if @timesheet_entry && @timesheet_entry.errors.any? %>
+  <div id="error_explanation">
+    <ul class="list-unstyled">
+      <% @timesheet_entry.errors.each do |error| %>
+        <li>
+          <div class="alert alert-danger" role="alert">
+            <%= error.full_message %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
-      <ul>
-        <% timesheet_entry.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<li id="<%= dom_id(timesheet_entry) %>_form" class="list-group-item">
+  <%= form_with(model: timesheet_entry, remote: true ) do |form| %>
+
+    <%= form.hidden_field @timesheet_entry.employee.id %>
+    <%= form.hidden_field @timesheet_entry.pay_period.id %>
+
+    <div class="mb-3">
+      <%= form.label :started_at, class: "sr-only" %>
+      <%= form.datetime_local_field :started_at, class: "form-control" %>
     </div>
-  <% end %>
 
-  <div>
-    <%= form.label :employee_id, style: "display: block" %>
-    <%= form.text_field :employee_id %>
-  </div>
-
-  <div>
-    <%= form.label :started_at, style: "display: block" %>
-    <%= form.datetime_field :started_at %>
-  </div>
-
-  <div>
-    <%= form.label :ended_at, style: "display: block" %>
-    <%= form.datetime_field :ended_at %>
-  </div>
-
-  <div>
-    <%= form.label :hours_worked, style: "display: block" %>
-    <%= form.text_field :hours_worked %>
-  </div>
-
-  <div>
-    <%= form.label :comments, style: "display: block" %>
-    <%= form.text_area :comments %>
-  </div>
-
-  <div>
-    <%= form.label :entry_approval_status, style: "display: block" %>
-    <%= form.text_field :entry_approval_status %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :ended_at, class: "sr-only" %>
+      <%= form.datetime_local_field :ended_at, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label "Comments" %>
+      <%= form.text_field :comment, class: "form-control" %>
+    </div>
+    <%= form.submit class: "btn btn-outline-secondary btn-block" %>
+  </li>
 <% end %>

@@ -5,6 +5,6 @@ Rails.application.routes.draw do
 
   resources :messages
   resources :companies
-  resources :timesheet_entries
+  resources :timesheet_entries 
   resources :employees
 end

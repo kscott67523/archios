@@ -1,10 +1,7 @@
-<h1>Editing timesheet entry</h1>
-
-<%= render "form", timesheet_entry: @timesheet_entry %>
-
-<br>
-
-<div>
-  <%= link_to "Show this timesheet entry", @timesheet_entry %> |
-  <%= link_to "Back to timesheet entries", timesheet_entries_path %>
+<div class="row mb-4">
+  <div class="col-md-6 offset-md-3">
+    <h1 class="display-4"></h1>
+    
+    <%= render 'form', timesheet_entry: @timesheet_entry %>
+  </div>
 </div>

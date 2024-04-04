@@ -1,32 +1,29 @@
-<div id="<%= dom_id timesheet_entry %>">
-  <p>
-    <strong>Employee:</strong>
-    <%= timesheet_entry.employee_id %>
-  </p>
+<div class="row mb-4"> <!-- Changed container to row -->
+  <div class="col-md-6 offset-md-3">
+    <div class="d-flex">
+      <div class="flex-shrink-0">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item" >
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= timesheet_entry.id %>" aria-expanded="false" aria-controls="collapse<%= timesheet_entry.id %>">
+                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                </h2>
 
-  <p>
-    <strong>Started at:</strong>
-    <%= timesheet_entry.started_at %>
-  </p>
+                <div class="accordion-body" id="<%= dom_id(@timesheet_entry) %>">
 
-  <p>
-    <strong>Ended at:</strong>
-    <%= timesheet_entry.ended_at %>
-  </p>
+                  <%= timesheet_entry.started_at.strftime("%b %d %l:%M%P") %> - <%= timesheet_entry.ended_at ? timesheet_entry.ended_at.strftime("%l:%M%P") : "Present" %>
 
-  <p>
-    <strong>Hours worked:</strong>
-    <%= timesheet_entry.hours_worked %>
-  </p>
-
-  <p>
-    <strong>Comments:</strong>
-    <%= timesheet_entry.comments %>
-  </p>
-
-  <p>
-    <strong>Entry approval status:</strong>
-    <%= timesheet_entry.entry_approval_status %>
-  </p>
-
-</div>
+                  <span class="badge rounded-pill bg-<%= timesheet_entry.entry_approval_status == "approved" ? "success" : timesheet_entry.entry_approval_status == "submitted" ? "warning" : "danger" %> ms-2">
+                    <%= timesheet_entry.entry_approval_status %>
+                  </span>
+                </button>
+                <%= link_to "Edit", edit_timesheet_entry_path(timesheet_entry), method: :post, class: "btn btn-dark p-2" %>
+                <%= link_to "Delete", timesheet_entry_path(timesheet_entry), method: :delete, data: { turbo_method: :delete }, class: "btn btn-dark p-2" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>

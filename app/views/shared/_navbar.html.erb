@@ -17,23 +17,25 @@
               <i class="fas fa-chart-line"></i> Dashboard
             <% end %>
           </li>
-          <% if @employee && employee_signed_in? %>
+          <%= link_to "Timesheets", timesheet_entries_path, class: "nav-link active" %> 
+        </li>
+        <% if @employee && employee_signed_in? %>
           <li class="nav-item">
-            <%= button_to "Profile", edit_employee_path(@employee), class: "btn btn-info p-2" %> 
-            </li>
-            <li class="nav-item">
-              <%= button_to "Sign Out", destroy_employee_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn btn-dark p-2" %>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <%= button_to "Sign In", new_employee_session_path, class: "btn btn-outline-success p-2" %>
-            </li>
-            <li class="nav-item">
-              <%= button_to "Sign Up", new_employee_registration_path, class: "btn btn-success p-2" %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
+            <%= button_to "Profile", employee_path(@employee), class: "btn btn-info p-2" %>
+          </li>
+          <li class="nav-item">
+            <%= button_to "Sign Out", destroy_employee_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn btn-dark p-2" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= button_to "Sign In", new_employee_session_path, class: "btn btn-outline-success p-2" %>
+          </li>
+          <li class="nav-item">
+            <%= button_to "Sign Up", new_employee_registration_path, class: "btn btn-success p-2" %>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
+</div>
 </nav>
