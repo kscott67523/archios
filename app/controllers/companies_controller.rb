@@ -4,10 +4,12 @@ class CompaniesController < ApplicationController
   # GET /companies or /companies.json
   def index
     @companies = Company.all
+    @name = "Timesheet SMS"
   end
 
   # GET /companies/1 or /companies/1.json
   def show
+    @name = @company.name
   end
 
   # GET /companies/new

@@ -1,4 +1,5 @@
 class EmployeesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_employee, only: %i[ show edit update destroy ]
 
   # GET /employees or /employees.json
@@ -8,6 +9,7 @@ class EmployeesController < ApplicationController
 
   # GET /employees/1 or /employees/1.json
   def show
+    @employee
   end
 
   # GET /employees/new
@@ -58,13 +60,14 @@ class EmployeesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_employee
-      @employee = Employee.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def employee_params
-      params.require(:employee).permit(:employee_id, :email, :password, :first_name, :last_name, :role, :company_id, :manager_id, :phone_number, :has_sms, :profile_picture, :time_zone)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_employee
+    @employee = Employee.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def employee_params
+    params.require(:employee).permit(:employee_id, :email, :password, :first_name, :last_name, :role, :company_id, :manager_id, :phone_number, :has_sms, :profile_picture, :time_zone)
+  end
 end
