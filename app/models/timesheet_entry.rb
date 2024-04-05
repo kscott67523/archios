@@ -6,7 +6,7 @@
 #  comments              :text
 #  ended_at              :datetime
 #  entry_approval_status :string
-#  hours_worked          :float            default(0.0)
+#  hours_worked          :decimal(, )
 #  started_at            :datetime
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
