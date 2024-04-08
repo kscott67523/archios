@@ -15,10 +15,12 @@ class TimesheetEntriesController < ApplicationController
 
   # GET /timesheet_entries/new
   def new
-    @timesheet_entry = TimesheetEntry.new
-    respond_to do |format|
-      format.html
-      format.js { }
+    @employee = current_employee
+    @timesheet_entry = @employee.timesheet_entries.last
+    if @timesheet_entry&.ended_at.nil?
+      @timesheet_entry.update(ended_at: params[:ended_at])
+    else
+      @timesheet_entry = TimesheetEntry.new(timesheet_entry_params)
     end
   end
 
@@ -31,30 +33,41 @@ class TimesheetEntriesController < ApplicationController
   end
 
   # POST /timesheet_entries or /timesheet_entries.json
-  def create
-    @timesheet_entry = TimesheetEntry.new(timesheet_entry_params)
+# POST /timesheet_entries or /timesheet_entries.json
+def create
+  @employee = current_employee
+  @timesheet_entry = @employee.timesheet_entries.last
 
-    respond_to do |format|
-      if @timesheet_entry.save
-        format.html { redirect_to timesheet_entry_url(@timesheet_entry), notice: "Timesheet entry was successfully created." }
-        format.json { render :show, status: :created, location: @timesheet_entry }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @timesheet_entry.errors, status: :unprocessable_entity }
-      end
+  if @timesheet_entry && @timesheet_entry.ended_at.nil?
+    @timesheet_entry.update(ended_at: params[:timesheet_entry][:ended_at])
+  else
+    @timesheet_entry = TimesheetEntry.new(timesheet_entry_params)
+  end
+
+  respond_to do |format|
+    if @timesheet_entry.save
+      format.html { redirect_to timesheet_entry_url(@timesheet_entry), notice: "Timesheet entry was successfully created." }
+      format.json { render :show, status: :created, location: @timesheet_entry }
+    else
+      format.html { render :new, status: :unprocessable_entity }
+      format.json { render json: @timesheet_entry.errors, status: :unprocessable_entity }
     end
   end
+end
+
 
   # PATCH/PUT /timesheet_entries/1 or /timesheet_entries/1.json
   def update
     if @timesheet_entry.update(timesheet_entry_params)
       respond_to do |format|
-        format.html { redirect_to @timesheet_entry, notice: "Timesheet entry was successfully updated." }
+        format.html { redirect_to @employee, notice: "Timesheet entry was successfully updated." }
         format.js { } # This will render update.js.erb
       end
     else
       render :edit
     end
+
+    @timesheet_entry.calculate_hours_worked
   end
 
   # DELETE /timesheet_entries/1 or /timesheet_entries/1.json
@@ -76,6 +89,6 @@ class TimesheetEntriesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def timesheet_entry_params
-    params.require(:timesheet_entry).permit(:employee_id, :started_at, :ended_at, :hours_worked, :comments, :entry_approval_status)
+    params.require(:timesheet_entry).permit(:employee_id, :started_at, :ended_at, :hours_worked, :comments, :entry_approval_status, :pay_period_id)
   end
 end

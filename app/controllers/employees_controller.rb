@@ -9,19 +9,8 @@ class EmployeesController < ApplicationController
 
   # GET /employees/1 or /employees/1.json
   def show
-    if current_employee.manager? && current_employee == @employee.manager
-      # Current user is a manager and the employee is under their supervision
-      @name = @employee.company.name
-    elsif current_employee == @employee
-      # Current user is the employee themselves
-      render :show
-    else
-      # Current user is not authorized to view the employee's profile
-      redirect_to root_path, alert: "You are not authorized to view this profile."
+    @employee = current_employee 
     end
-
-   # @timesheet_entries = @employee.timesheet_entries.paginate(page: params[:page], per_page: 10)
-  end
   # GET /employees/new
   def new
     @employee = Employee.new

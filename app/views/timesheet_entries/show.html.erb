@@ -1,25 +1,8 @@
-<!-- app/views/timesheet_entries/show.html.erb -->
-
-<h2 class="text-mute text-center"><%= @employee.first_name %>'s Timesheets</h2>
-<p class="text-mute text-center">Pay Period: <%= pay_period = PayPeriod.find_by("started_at <= ? AND ended_at >= ?", Date.today, Date.today).id %></p>
-<div class="card text-center">
-  <div class="accordion accordion-flush" id="accordionFlushExample">
-    <% @employee.timesheet_entries.group_by { |entry| entry.started_at.to_date }.each do |date, entries| %>
-      <div class="accordion-item">
-        <h5 class="accordion-header"><%= date.strftime("%A, %B %d, %Y") %></h5>
-        <% entries.each do |timesheet_entry| %>
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= timesheet_entry.id %>" aria-expanded="false" aria-controls="collapse<%= timesheet_entry.id %>">
-            <%= timesheet_entry.started_at.strftime("%b %d %l:%M%P") %> - <%= timesheet_entry.ended_at ? timesheet_entry.ended_at.strftime("%l:%M%P") : "Present" %>
-            <span class="badge rounded-pill bg-<%= timesheet_entry.entry_approval_status == "approved" ? "success" : timesheet_entry.entry_approval_status == "submitted" ? "warning" : "danger" %> ms-2"><%= timesheet_entry.entry_approval_status %></span>
-          </button>
-          <div id="collapse<%= timesheet_entry.id %>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-            <div class="accordion-body">
-              <%= render partial: 'timesheet_entries/form', locals: { timesheet_entry: timesheet_entry } %>
-              <%= link_to "Delete", timesheet_entry, method: :destroy, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
-            </div>
-          </div>
-        <% end %>
-      </div>
+<% @employee.timesheet_entries.group_by { |entry| entry.started_at.to_date }.each do |date, entries| %>
+  <div class="accordion-item">
+    <h5 class="accordion-header"><%= date.strftime("%A, %B %d, %Y") %></h5>
+    <% entries.sort_by(&:started_at).each do |timesheet_entry| %>
+      <%= render partial: 'timesheet_entries/form', locals: { timesheet_entry: timesheet_entry } %>
     <% end %>
   </div>
-</div>
+<% end %>

@@ -52,7 +52,7 @@ class Employee < ApplicationRecord
   # Associations
   belongs_to :company
   belongs_to :manager, class_name: "Employee", foreign_key: :manager_id, optional: true
-  has_many :timesheet_entries
+  has_many :timesheet_entries, class_name: "TimesheetEntry", foreign_key: :employee_id
   has_many :messages, foreign_key: :sender_id
 
   def dashboard
@@ -75,6 +75,10 @@ class Employee < ApplicationRecord
                  .select('timesheet_entries.*, pay_periods.started_at AS pay_period_started_at, pay_periods.ended_at AS pay_period_ended_at')
                  .where(pay_periods: { id: pay_period.id })
                  .order('timesheet_entries.created_at ASC')
+  end
+
+  def total_hours_worked
+    timesheet_entries.current.sum { |entry| entry.hours_worked || 0 }
   end
   
   def full_name

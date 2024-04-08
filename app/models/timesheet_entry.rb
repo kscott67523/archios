@@ -24,9 +24,9 @@
 #  pay_period_id  (pay_period_id => pay_periods.id)
 #
 class TimesheetEntry < ApplicationRecord
-  enum entry_approval_status: { submitted: "submitted", pending: "pending", approved: "approved", rejected: "rejected" }, _default: "pending"
+  enum entry_approval_status: { pending: "pending", approved: "approved", rejected: "rejected" }, _default: "approved"
   belongs_to :employee
-  belongs_to :pay_period
+  belongs_to :pay_period, class_name: "PayPeriod", foreign_key: :pay_period_id
   has_one :manager, through: :employee
   has_one :approver, through: :manager, source: :manager
 
@@ -36,16 +36,16 @@ class TimesheetEntry < ApplicationRecord
   validate :end_time_after_start_time, if: -> { started_at.present? && ended_at.present? }
 
   scope :approved_entries, -> { where(entry_approval_status: :approved) }
-  scope :pending_entries, -> { where(entry_approval_status: :pending) }
   scope :rejected_entries, -> { where(entry_approval_status: :rejected) }
   scope :submitted_entries, -> { where(entry_approval_status: :submitted) }
+  scope :current, -> { where(pay_period_id: PayPeriod.last.id) }
 
   def calculate_hours_worked
     return 0 if ended_at == nil
     duration_seconds = (ended_at - started_at)
     duration_hours = duration_seconds.to_f / 3600
     hours_worked = duration_hours.round(2) # Round to two decimal places
-    update_columns(hours_worked: hours_worked, entry_approval_status: "submitted")
+    update_columns(hours_worked: hours_worked, entry_approval_status: "pending")
   end
 
   private

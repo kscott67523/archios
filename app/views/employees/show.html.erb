@@ -4,20 +4,86 @@
       <%= render "employee", employee: @employee, dom_id: dom_id(@employee) %>
     </div>
   </div>
-</div>
 
-<div class="container-fluid">
-      <% if @employee.timesheet_entries.any? %>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          Clock Status
+        </div>
+        <div class="card-body">
+<% if @employee.timesheet_entries.any? %>
   <% latest_entry = @employee.timesheet_entries.last %>
   <% if latest_entry.ended_at.nil? %>
-    <p>You are currently clocked in.</p>
+    <p class="clock-status"><span class="badge bg-success"><i class="bi bi-check-circle-fill"></i> You are currently clocked in</span></p>
   <% else %>
-    <p>You are currently clocked out.</p>
+    <p class="clock-status"><span class="badge bg-danger"><i class="bi bi-dash-circle-fill"></i> You are currently clocked out</span></p>
   <% end %>
 <% else %>
   <p><%= @employee.first_name %> has no timesheet entries.</p>
 <% end %>
-  <% if @employee.timesheet_entries.any? %>
-      <%= render template: "timesheet_entries/show", employee: @employee %>
+      <div class="mt-4">
+<%= form_with(model: TimesheetEntry, local: false, url: timesheet_entries_path, method: :post, remote: true, id: "timesheet_entry_form") do |form| %>
+
+  <%= form.hidden_field :employee_id, value: @employee.id %>
+  <%= form.hidden_field :pay_period_id, value: PayPeriod.last.id %>
+
+  <% if @employee.timesheet_entries.any? && @employee.timesheet_entries.last.ended_at.nil? %>
+    <%= form.hidden_field :timesheet_entry, value: latest_entry.id%>
+    <%= form.hidden_field :started_at, value: @employee.timesheet_entries.last.started_at %>
+    <%= form.hidden_field :ended_at, value: Time.now %>
+    <%= form.submit "Clock Out", class: "btn btn-danger btn-block", id: "clock_button" %>
+  <% else %>
+    <%= form.submit "Clock In", class: "btn btn-success btn-block", id: "clock_button" %>
+     <%= form.hidden_field :started_at, value: Time.now %>
   <% end %>
+<% end %>
+      </div>
+
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          Hours Worked This Pay Period
+        </div>
+        <div class="card-body">
+            <h1 class="display-1"><%= @employee.total_hours_worked.to_f %> hours</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          Timesheet
+        </div>
+        <div class="card-body">
+          <% if @employee.timesheet_entries.any? %>
+            <% latest_entry = @employee.timesheet_entries.last %>
+            <% if latest_entry %>
+              <div class="accordion-item">
+                <h5 class="accordion-header"><%= latest_entry.started_at.strftime("%A, %B %d, %Y") %></h5>
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= latest_entry.id %>" aria-expanded="false" aria-controls="collapse<%= latest_entry.id %>">
+                  <%= latest_entry.started_at.strftime("%b %d %l:%M%P") %> - <%= latest_entry.ended_at ? latest_entry.ended_at.strftime("%l:%M%P") : "Present" %>
+                  <span class="badge rounded-pill bg-<%= latest_entry.entry_approval_status == "approved" ? "success" : latest_entry.entry_approval_status == "submitted" ? "warning" : "danger" %> ms-2"><%= latest_entry.entry_approval_status %></span>
+                </button>
+                <div id="collapse<%= latest_entry.id %>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                    <%= render partial: 'timesheet_entries/form', locals: { timesheet_entry: latest_entry } %>
+                    <%= link_to "Delete", latest_entry, method: :destroy, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <p><%= @employee.first_name %> has no timesheet entries.</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
