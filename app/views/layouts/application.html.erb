@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Timesheet SMS</title>
+    <title>archios</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -27,5 +27,6 @@
         </div>
       </div>
       <%= yield %>
+      <%= link_to "Back", :back, class: "btn btn-outline-secondary" %>
     </body>
   </html>

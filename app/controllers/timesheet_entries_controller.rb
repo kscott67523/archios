@@ -10,6 +10,7 @@ class TimesheetEntriesController < ApplicationController
   # GET /timesheet_entries/1 or /timesheet_entries/1.json
   def show
     @employee = @timesheet_entry.employee
+    @now = Time.now
   end
 
   # GET /timesheet_entries/new

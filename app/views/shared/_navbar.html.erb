@@ -6,7 +6,7 @@
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Timesheet SMS</h5>
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">archios</h5>
         <hr>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
@@ -16,9 +16,6 @@
             <%= link_to @employee, class: "nav-link active" do %>
               <i class="fas fa-chart-line"></i> Dashboard
             <% end %>
-          </li>
-          <%= link_to "Timesheets", timesheet_entries_path, class: "nav-link active" %> 
-        </li>
         <% if @employee && employee_signed_in? %>
           <li class="nav-item">
             <%= button_to "Profile", employee_path(@employee), class: "btn btn-info p-2" %>
@@ -28,10 +25,10 @@
           </li>
         <% else %>
           <li class="nav-item">
-            <%= button_to "Sign In", new_employee_session_path, class: "btn btn-outline-success p-2" %>
+            <%= button_to "Sign In", employee_session_path, class: "btn btn-outline-success p-2" %>
           </li>
           <li class="nav-item">
-            <%= button_to "Sign Up", registration_path, class: "btn btn-success p-2" %>
+            <%= button_to "Sign Up", employee_registration_path, class: "btn btn-success p-2" %>
           </li>
         <% end %>
       </ul>

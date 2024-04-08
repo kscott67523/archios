@@ -9,10 +9,19 @@ class EmployeesController < ApplicationController
 
   # GET /employees/1 or /employees/1.json
   def show
-    @employee
-    @name = @employee.company.name
-  end
+    if current_employee.manager? && current_employee == @employee.manager
+      # Current user is a manager and the employee is under their supervision
+      @name = @employee.company.name
+    elsif current_employee == @employee
+      # Current user is the employee themselves
+      render :show
+    else
+      # Current user is not authorized to view the employee's profile
+      redirect_to root_path, alert: "You are not authorized to view this profile."
+    end
 
+   # @timesheet_entries = @employee.timesheet_entries.paginate(page: params[:page], per_page: 10)
+  end
   # GET /employees/new
   def new
     @employee = Employee.new
@@ -31,6 +40,7 @@ class EmployeesController < ApplicationController
         format.html { redirect_to employee_url(@employee), notice: "Employee was successfully created." }
         format.json { render :show, status: :created, location: @employee }
       else
+        # Render the new action and pass the params back to the view
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @employee.errors, status: :unprocessable_entity }
       end
@@ -64,11 +74,16 @@ class EmployeesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_employee
+    if current_employee.present?
+      @employee = current_employee
+    else
     @employee = Employee.find(params[:id])
+    end
   end
 
   # Only allow a list of trusted parameters through.
   def employee_params
-    params.require(:employee).permit(:employee_id, :email, :password, :first_name, :last_name, :role, :company_id, :manager_id, :phone_number, :has_sms, :profile_picture, :time_zone)
+    params.require(:employee).permit(:email, :password, :first_name, :last_name, :role, :company_id, :manager_id, :phone_number, :has_sms, :profile_picture, :time_zone)
   end
+  
 end

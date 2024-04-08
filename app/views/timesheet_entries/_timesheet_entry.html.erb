@@ -10,9 +10,7 @@
                 </h2>
 
                 <div class="accordion-body" id="<%= dom_id(@timesheet_entry) %>">
-
                   <%= timesheet_entry.started_at.strftime("%b %d %l:%M%P") %> - <%= timesheet_entry.ended_at ? timesheet_entry.ended_at.strftime("%l:%M%P") : "Present" %>
-
                   <span class="badge rounded-pill bg-<%= timesheet_entry.entry_approval_status == "approved" ? "success" : timesheet_entry.entry_approval_status == "submitted" ? "warning" : "danger" %> ms-2">
                     <%= timesheet_entry.entry_approval_status %>
                   </span>

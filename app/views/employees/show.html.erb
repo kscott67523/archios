@@ -7,9 +7,17 @@
 </div>
 
 <div class="container-fluid">
+      <% if @employee.timesheet_entries.any? %>
+  <% latest_entry = @employee.timesheet_entries.last %>
+  <% if latest_entry.ended_at.nil? %>
+    <p>You are currently clocked in.</p>
+  <% else %>
+    <p>You are currently clocked out.</p>
+  <% end %>
+<% else %>
+  <p><%= @employee.first_name %> has no timesheet entries.</p>
+<% end %>
   <% if @employee.timesheet_entries.any? %>
-    <% @employee.current_timesheet.each do |timesheet_entry| %>
       <%= render template: "timesheet_entries/show", employee: @employee %>
-    <% end %>
   <% end %>
 </div>

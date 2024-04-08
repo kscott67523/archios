@@ -24,7 +24,6 @@
 #
 #  index_employees_on_company_id            (company_id)
 #  index_employees_on_email                 (email) UNIQUE
-#  index_employees_on_manager_id            (manager_id)
 #  index_employees_on_reset_password_token  (reset_password_token) UNIQUE
 #
 # Foreign Keys

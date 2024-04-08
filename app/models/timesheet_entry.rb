@@ -20,6 +20,7 @@
 #
 # Foreign Keys
 #
+#  employee_id    (employee_id => employees.id)
 #  pay_period_id  (pay_period_id => pay_periods.id)
 #
 class TimesheetEntry < ApplicationRecord

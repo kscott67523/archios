@@ -1,5 +1,6 @@
 {
   "recommendations": [
-    "jnbt.vscode-rufo"
+    "jnbt.vscode-rufo",
+    "aliariff.vscode-erb-beautify"
   ]
 }

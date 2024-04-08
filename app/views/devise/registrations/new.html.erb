@@ -1,24 +1,48 @@
-<h2>Sign up</h2>
-
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :first_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "first_name", class: 'form-control' } %>
+    <%= f.input :last_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "last_name", class: 'form-control' } %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" }%>
+                input_html: { autocomplete: "email", class: 'form-control' } %>
+<%= f.association :company,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "company", class: 'form-control' },
+                  collection: Company.all.map { |c| [c.name, c.id] },
+                  prompt: "Select Company",
+                  selected: params[:company_id] %>
+
+    <%= f.collection_radio_buttons :role, [['manager', 'Manager'], ['employee', 'Employee']],
+                                   :first, :last,
+                                   required: true,
+                                   autofocus: true,
+                                   input_html: { autocomplete: "role", class: 'form-control' } %>
+    <%= f.input :phone_number, label: 'Phone Number', required: true, autofocus: true,
+                input_html: { type: 'tel', pattern: '\d{10}', title: 'Please enter a 10-digit phone number',
+                              class: 'form-control' } %>
+    <%= f.select :time_zone, ActiveSupport::TimeZone.us_zones.map { |tz| [tz.name, tz.name] },
+                 { prompt: 'Select Time Zone' }, { class: 'form-control', id: 'time_zone_select' } %>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { autocomplete: "new-password", class: 'form-control' } %>
     <%= f.input :password_confirmation,
                 required: true,
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { autocomplete: "new-password", class: 'form-control' } %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Sign up", input_html: { class: 'form-check-inline btn btn-success' } %>
   </div>
 <% end %>
 

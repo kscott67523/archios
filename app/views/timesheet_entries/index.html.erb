@@ -3,7 +3,7 @@
 <h1>Timesheet entries</h1>
 
 <div id="timesheet_entries">
-  <% @timesheet_entries.each do |timesheet_entry| %>
+  <% @employee.timesheet_entries.each do |timesheet_entry| %>
     <%= render timesheet_entry %>
     <p>
       <%= link_to "Show this timesheet entry", timesheet_entry %>

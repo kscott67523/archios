@@ -112,3 +112,7 @@ end
 gem "react", "~> 0.0.2"
 
 gem "shakapacker", "= 7.2"
+
+gem "good_job", "~> 3.27"
+
+gem "kaminari", "~> 1.2"

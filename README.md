@@ -1,54 +1,38 @@
-# Rails Template
+# Archios Timesheet App
 
-This is a base Ruby on Rails repository configured for learning with Codespaces (and Gitpod).
+Archios is a sophisticated timesheet application that simplifies time tracking for individuals and teams. With Archios, users can conveniently clock in and out using SMS, making it effortless to log working hours from anywhere, anytime.
 
-- Ruby version: `3.2.1`
-- Rails version: `7.0.4.3`
+## Features
 
+- **SMS Clock-In**: Easily clock in and out using SMS commands.
+- **Efficient Time Tracking**: Streamline time tracking for individuals and teams.
+- **User-Friendly Interface**: Intuitive and user-friendly interface for seamless navigation.
+- **Customizable Reporting**: Generate customizable reports to track working hours and productivity.
+- **Multi-Platform Accessibility**: Accessible from any device with SMS capability, including smartphones and basic mobile phones.
 
-We've added additional Ruby gems and other software that aren't automatically available in a new Rails app.
+## Getting Started
 
-### Additional gems:
+To start using Archios, follow these steps:
 
-- [`appdev_support`](https://github.com/firstdraft/appdev_support)
-- [`annotate`](https://github.com/ctran/annotate_models)
-- [`awesome_print`](https://github.com/awesome-print/awesome_print)
-- [`better_errors`](https://github.com/BetterErrors/better_errors)
-- [`binding_of_caller`](https://github.com/banister/binding_of_caller)
-- [`dotenv-rails`](https://github.com/bkeepers/dotenv)
-- [`draft_generators`](https://github.com/firstdraft/draft_generators/)
-- [`draft_matchers`](https://github.com/jelaniwoods/draft_matchers/)
-- [`devise`](https://github.com/heartcombo/devise)
-- [`faker`](https://github.com/faker-ruby/faker)
-- [`grade_runner`](https://github.com/firstdraft/grade_runner/)
-- [`htmlbeautifier`](https://github.com/threedaymonk/htmlbeautifier/)
-- [`http`](https://github.com/httprb/http)
-- [`pry_rails`](https://github.com/pry/pry-rails)
-- [`rails_db`](https://github.com/igorkasyanchuk/rails_db)
-- [`rails-erd`](https://github.com/voormedia/rails-erd)
-- [`rspec-html-matchers`](https://github.com/kucaahbe/rspec-html-matchers)
-- [`rspec-rails`](https://github.com/rspec/rspec-rails)
-- [`rufo`](https://github.com/ruby-formatter/rufo)
-- [`specs_to_readme`](https://github.com/firstdraft/specs_to_readme)
-- [`table_print`](https://github.com/arches/table_print)
-- [`web_git`](https://github.com/firstdraft/web_git)
-- [`webmock`](https://github.com/bblimke/webmock)
+1. **Sign Up**: Create an account on the Archios platform.
+2. **Configure SMS Clock-In**: Set up your SMS clock-in preferences in your account settings.
+3. **Clock In**: Send an SMS with the designated clock-in keyword to start tracking your working hours.
+4. **Clock Out**: When you're done working, send another SMS with the clock-out keyword to stop the timer.
+5. **View Reports**: Access your timesheet reports and analyze your productivity over time.
 
-### Additional software:
-- OS Ubuntu 20.04.5 LTS
-- Chromedriver
-- Fly.io's `flyctl`
-- Google Chrome (headless browser)
-- Graphviz
-- Heroku 
-- Node JS 18
-- NPM 8.19.3
-- Parity
-- Postgresql 12
-- Redis
-- Yarn
+## Requirements
 
-### VS Code extensions:
-- aliariff.vscode-erb-beautify
-- mbessey.vscode-rufo
-- vortizhe.simple-ruby-erb
+- A mobile phone with SMS capability
+- Internet access for account setup and reporting (optional)
+
+## Usage
+
+### SMS Commands
+
+- **Clock In**: Send "IN" to the designated Archios number to start your workday.
+- **Clock Out**: Send "OUT" to the same number to end your workday and log your hours.
+
+### Reporting
+
+Archios provides detailed timesheet reports that can be accessed through the web interface. Simply log in to your account to view and download your reports.
+

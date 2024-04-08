@@ -3,8 +3,9 @@
 # Table name: pay_periods
 #
 #  id         :integer          not null, primary key
-#  ended_at   :datetime
-#  started_at :datetime
+#  ended_at   :date
+#  name       :string
+#  started_at :date
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
