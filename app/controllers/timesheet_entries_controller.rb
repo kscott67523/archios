@@ -46,7 +46,7 @@ def create
 
   respond_to do |format|
     if @timesheet_entry.save
-      format.html { redirect_to timesheet_entry_url(@timesheet_entry), notice: "Timesheet entry was successfully created." }
+      format.html { redirect_to employee_path(@employee), notice: "Timesheet entry was successfully created." }
       format.json { render :show, status: :created, location: @timesheet_entry }
     else
       format.html { render :new, status: :unprocessable_entity }
@@ -60,7 +60,7 @@ end
   def update
     if @timesheet_entry.update(timesheet_entry_params)
       respond_to do |format|
-        format.html { redirect_to @employee, notice: "Timesheet entry was successfully updated." }
+        format.html { redirect_to employee_path(@employee), notice: "Timesheet entry was successfully updated." }
         format.js { } # This will render update.js.erb
       end
     else

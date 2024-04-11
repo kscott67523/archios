@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :requests
   devise_for :employees, controllers: { registrations: 'registrations' }
 
   authenticated :employee do

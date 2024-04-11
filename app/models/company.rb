@@ -2,7 +2,7 @@
 #
 # Table name: companies
 #
-#  id         :integer          not null, primary key
+#  id         :bigint           not null, primary key
 #  logo       :string
 #  name       :string
 #  created_at :datetime         not null

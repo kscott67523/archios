@@ -2,7 +2,7 @@
 #
 # Table name: employees
 #
-#  id                     :integer          not null, primary key
+#  id                     :bigint           not null, primary key
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  first_name             :string
@@ -17,7 +17,7 @@
 #  time_zone              :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  company_id             :integer          not null
+#  company_id             :bigint           not null
 #  manager_id             :integer
 #
 # Indexes
@@ -28,7 +28,7 @@
 #
 # Foreign Keys
 #
-#  company_id  (company_id => companies.id)
+#  fk_rails_...  (company_id => companies.id)
 #
 class Employee < ApplicationRecord
   # Include default devise modules. Others available are:

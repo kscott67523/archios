@@ -2,7 +2,7 @@
 #
 # Table name: timesheet_entries
 #
-#  id                    :integer          not null, primary key
+#  id                    :bigint           not null, primary key
 #  comments              :text
 #  ended_at              :datetime
 #  entry_approval_status :string
@@ -10,8 +10,8 @@
 #  started_at            :datetime
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
-#  employee_id           :integer          not null
-#  pay_period_id         :integer
+#  employee_id           :bigint           not null
+#  pay_period_id         :bigint
 #
 # Indexes
 #
@@ -20,8 +20,8 @@
 #
 # Foreign Keys
 #
-#  employee_id    (employee_id => employees.id)
-#  pay_period_id  (pay_period_id => pay_periods.id)
+#  fk_rails_...  (employee_id => employees.id)
+#  fk_rails_...  (pay_period_id => pay_periods.id)
 #
 class TimesheetEntry < ApplicationRecord
   enum entry_approval_status: { pending: "pending", approved: "approved", rejected: "rejected" }, _default: "approved"
