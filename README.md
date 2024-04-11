@@ -4,7 +4,7 @@ Archios is a sophisticated timesheet application that simplifies time tracking f
 
 ## Features
 
-- **SMS Clock-In**: Easily clock in and out using SMS commands.
+- **Email Clock-In**: Easily clock in and out using SMS commands.
 - **Efficient Time Tracking**: Streamline time tracking for individuals and teams.
 - **User-Friendly Interface**: Intuitive and user-friendly interface for seamless navigation.
 - **Customizable Reporting**: Generate customizable reports to track working hours and productivity.
@@ -35,4 +35,3 @@ To start using Archios, follow these steps:
 ### Reporting
 
 Archios provides detailed timesheet reports that can be accessed through the web interface. Simply log in to your account to view and download your reports.
-
