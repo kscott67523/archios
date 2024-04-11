@@ -3,7 +3,7 @@ task sample_data: :environment do
   if Rails.env.development?
     TimesheetEntry.destroy_all
     PayPeriod.destroy_all
-    Message.destroy_all
+    Request.destroy_all
     Employee.destroy_all
     Company.destroy_all
 
@@ -67,7 +67,7 @@ task sample_data: :environment do
           started_at: started_at,
           ended_at: ended_at,
           comments: comments,
-          entry_approval_status: (ended_at.nil? ? "pending" : ["submitted", "approved", "rejected"].sample),
+          entry_approval_status: "approved",
           pay_period_id: current_pay_period.id,
         )
       end

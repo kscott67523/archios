@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_05_192802) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_11_200750) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.string "logo"
@@ -22,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_05_192802) do
     t.string "first_name"
     t.string "last_name"
     t.string "role"
-    t.integer "company_id", null: false
+    t.bigint "company_id", null: false
     t.integer "manager_id"
     t.string "phone_number"
     t.boolean "has_sms"
@@ -48,14 +51,24 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_05_192802) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "requests", force: :cascade do |t|
+    t.string "request_type"
+    t.text "request_body"
+    t.bigint "timesheet_entry_id", null: false
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["timesheet_entry_id"], name: "index_requests_on_timesheet_entry_id"
+  end
+
   create_table "timesheet_entries", force: :cascade do |t|
-    t.integer "employee_id", null: false
+    t.bigint "employee_id", null: false
     t.datetime "started_at"
     t.datetime "ended_at"
     t.decimal "hours_worked"
     t.text "comments"
     t.string "entry_approval_status"
-    t.integer "pay_period_id"
+    t.bigint "pay_period_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["employee_id"], name: "index_timesheet_entries_on_employee_id"
@@ -63,6 +76,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_05_192802) do
   end
 
   add_foreign_key "employees", "companies"
+  add_foreign_key "requests", "timesheet_entries"
   add_foreign_key "timesheet_entries", "employees"
   add_foreign_key "timesheet_entries", "pay_periods"
 end

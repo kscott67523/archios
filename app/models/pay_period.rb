@@ -2,7 +2,7 @@
 #
 # Table name: pay_periods
 #
-#  id         :integer          not null, primary key
+#  id         :bigint           not null, primary key
 #  ended_at   :date
 #  name       :string
 #  started_at :date
