@@ -5,8 +5,8 @@ Archios is a sophisticated timesheet application that simplifies time tracking f
 ## Features
 
 - **Email Clock-In**: Easily clock in and out using simple commands.
-- **Managerial Dashboard**: Everything included with the employee dashboard plus admin privileges that allow you be up to date with all of your employees at once with no operational overhead: see their availability status, hours worked, and time zone.
-- **Employee Dashboard**: Streamline time tracking with our one-click clock in/clock out feature. Showcase your status with a dynamic status indicator that changes color based on availability status ("Available," "Deep Focus," and "Away from Desk").
+- **Managerial Dashboard**: Everything included with the employee dashboard plus admin privileges that allow you to be up to date with all of your employees at once with no operational overhead: see their availability status, hours worked, and time zone.
+- **Employee Dashboard**: Streamline time tracking with our one-click clock-in/clock-out feature. Showcase your status with a dynamic status indicator that changes color based on availability status ("Available," "Deep Focus," and "Away from Desk").
 - **User-Friendly Interface**: Intuitive and user-friendly interface for seamless navigation.
 - **Multi-Platform Accessibility**: Accessible from any device with email capability.
 
@@ -15,8 +15,8 @@ Archios is a sophisticated timesheet application that simplifies time tracking f
 To start using Archios, follow these steps:
 
 1. **Sign Up**: Create an account on the Archios platform.
-2. **Clock In**: Send an email with the designated clock-in keyword to start tracking your working hours.
-3. **Configure Email Clock-In**: Opt in to clock-in via email in your account settings.
+2. **Clock In**: Send us an email to support@archios.cloud with the designated clock-in keyword to start tracking your working hours.
+3. **Configure Email Clock-In**: Opt in to clock in via email in your account settings.
 4. **Clock Out**: When you're done working, send another email with the clock-out keyword to stop the timer.
 5. **View Reports**: Access your timesheet reports and analyze your productivity over time.
 
