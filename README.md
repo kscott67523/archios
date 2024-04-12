@@ -1,4 +1,4 @@
-# Archios Timesheet App
+# Archios: Don't lose track of time.
 
 Archios is a sophisticated timesheet application that simplifies time tracking for individuals and teams. With Archios, users can conveniently clock in and out using email, making it effortless to log working hours.
 
