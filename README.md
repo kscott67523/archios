@@ -4,7 +4,7 @@ Archios is a sophisticated timesheet application that simplifies time tracking f
 
 ## Features
 
-- **Email Clock-In**: Easily clock in and out using simple commands, also known as our t-mail function.
+- **Email Clock-In**: Easily clock in and out using simple commands, also known as our **t-mail function**.
 - **Managerial Dashboard**:
     - Everything included with the employee dashboard plus
         - **Informational armor:** Be ready for that status update with a snapshot of your team's status at once with no operational overhead:
@@ -24,7 +24,6 @@ To start using Archios, follow these steps:
 2. **Clock In**: Test out our one-click clock-in feature. 
 3. **Configure Email Clock-In (optional, but recommended!)**: Opt-in to timesheet updates via email (A.K.A. "t-mail") in your account settings. Once configured, you can populate your timesheet with one of our two-word commands (see below).
 4. **Clock Out**: When you're done working, clock out using our one-click function. Or, send us an email to: support@archios.cloud with the words "clock out," to try our t-mail service.
-5. **View Reports**: Access your timesheet reports and analyze your productivity over time.
 
 ## Requirements
 
@@ -36,7 +35,3 @@ To start using Archios, follow these steps:
 
 - **Clock In**: Send "Clock in" to the designated Archios email to start your workday.
 - **Clock Out**: Send "Clock out" to the same number to end your workday and log your hours.
-
-### Reporting
-
-Archios provides detailed timesheet reports that can be accessed through the web interface. Simply log in to your account to view and download your reports.
