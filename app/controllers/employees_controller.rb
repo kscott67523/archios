@@ -9,8 +9,9 @@ class EmployeesController < ApplicationController
 
   # GET /employees/1 or /employees/1.json
   def show
-    @employee = current_employee 
-    end
+    @employee = current_employee
+  end
+
   # GET /employees/new
   def new
     @employee = Employee.new
@@ -23,7 +24,6 @@ class EmployeesController < ApplicationController
   # POST /employees or /employees.json
   def create
     @employee = Employee.new(employee_params)
-
     respond_to do |format|
       if @employee.save
         format.html { redirect_to employee_url(@employee), notice: "Employee was successfully created." }
@@ -66,13 +66,12 @@ class EmployeesController < ApplicationController
     if current_employee.present?
       @employee = current_employee
     else
-    @employee = Employee.find(params[:id])
+      @employee = Employee.find(params[:id])
     end
   end
 
   # Only allow a list of trusted parameters through.
   def employee_params
-    params.require(:employee).permit(:email, :password, :first_name, :last_name, :role, :company_id, :manager_id, :phone_number, :has_sms, :profile_picture, :time_zone)
+    params.require(:employee).permit(:email, :password, :first_name, :last_name, :role, :company_id, :manager_id, :phone_number, :has_sms, :profile_picture, :time_zone, :status)
   end
-  
 end

@@ -46,6 +46,7 @@ def create
 
   respond_to do |format|
     if @timesheet_entry.save
+      @employee.status.update!(text: "Available")
       format.html { redirect_to employee_path(@employee), notice: "Timesheet entry was successfully created." }
       format.json { render :show, status: :created, location: @timesheet_entry }
     else
@@ -67,7 +68,6 @@ end
       render :edit
     end
 
-    @timesheet_entry.calculate_hours_worked
   end
 
   # DELETE /timesheet_entries/1 or /timesheet_entries/1.json

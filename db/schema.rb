@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_11_200750) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_12_041612) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,6 +61,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_11_200750) do
     t.index ["timesheet_entry_id"], name: "index_requests_on_timesheet_entry_id"
   end
 
+  create_table "statuses", force: :cascade do |t|
+    t.string "text"
+    t.bigint "employee_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_statuses_on_employee_id"
+  end
+
   create_table "timesheet_entries", force: :cascade do |t|
     t.bigint "employee_id", null: false
     t.datetime "started_at"
@@ -77,6 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_11_200750) do
 
   add_foreign_key "employees", "companies"
   add_foreign_key "requests", "timesheet_entries"
+  add_foreign_key "statuses", "employees"
   add_foreign_key "timesheet_entries", "employees"
   add_foreign_key "timesheet_entries", "pay_periods"
 end

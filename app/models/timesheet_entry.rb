@@ -24,7 +24,11 @@
 #  fk_rails_...  (pay_period_id => pay_periods.id)
 #
 class TimesheetEntry < ApplicationRecord
-  enum entry_approval_status: { pending: "pending", approved: "approved", rejected: "rejected" }, _default: "approved"
+  after_commit :calculate_hours_worked, on: [:update]
+  after_commit :make_unavailable, on: [:update]
+
+  enum entry_approval_status: { pending: "pending", approved: "approved", rejected: "rejected" }, _default: :pending
+
   belongs_to :employee
   belongs_to :pay_period, class_name: "PayPeriod", foreign_key: :pay_period_id
   has_one :manager, through: :employee
@@ -46,6 +50,10 @@ class TimesheetEntry < ApplicationRecord
     duration_hours = duration_seconds.to_f / 3600
     hours_worked = duration_hours.round(2) # Round to two decimal places
     update_columns(hours_worked: hours_worked, entry_approval_status: "pending")
+  end
+
+  def make_unavailable
+    employee.status.update!(text: "Away from Desk")
   end
 
   private

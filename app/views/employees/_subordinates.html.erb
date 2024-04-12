@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 justify-content-start p-3">
+      <div>
+        <%= raw clock_status(employee) %>
+      </div>
+      <div class="media-body">
+        <p class="card-text text-muted">
+          <a href="mailto:<%= employee.email %>"><%= employee.email %></a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

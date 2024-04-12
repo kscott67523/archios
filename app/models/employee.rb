@@ -35,9 +35,10 @@ class Employee < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+         
   # Enum for role
   enum role: { manager: "manager", employee: "employee" }
+
 
   # Validations
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
@@ -54,15 +55,19 @@ class Employee < ApplicationRecord
   belongs_to :manager, class_name: "Employee", foreign_key: :manager_id, optional: true
   has_many :timesheet_entries, class_name: "TimesheetEntry", foreign_key: :employee_id
   has_many :messages, foreign_key: :sender_id
+  has_many :employees, class_name: "Employee", foreign_key: "manager_id"
+  has_one :status, foreign_key: :employee_id
+
+  scope :managers, -> { where(role: roles[:manager]) }
 
   def dashboard
     { first_name: full_name,
-        company_name: company.name,
-        profile_picture_url: profile_picture? ? Rails.application.routes.url_helpers.url_for(profile_picture) : nil,
-        time_zone: time_zone,
-        role: role,
-        manager: manager.present? ? Rails.application.routes.url_helpers.url_for(manager.full_name) : nil,
-        current_timesheet: current_timesheet.map(&:attributes) }
+      company_name: company.name,
+      profile_picture_url: profile_picture? ? Rails.application.routes.url_helpers.url_for(profile_picture) : nil,
+      time_zone: time_zone,
+      role: role,
+      manager: manager.present? ? Rails.application.routes.url_helpers.url_for(manager.full_name) : nil,
+      current_timesheet: current_timesheet.map(&:attributes) }
   end
 
   def current_timesheet
@@ -72,15 +77,15 @@ class Employee < ApplicationRecord
     return {} if pay_period.nil?
 
     timesheet_entries.joins(:pay_period)
-                 .select('timesheet_entries.*, pay_periods.started_at AS pay_period_started_at, pay_periods.ended_at AS pay_period_ended_at')
-                 .where(pay_periods: { id: pay_period.id })
-                 .order('timesheet_entries.created_at ASC')
+      .select("timesheet_entries.*, pay_periods.started_at AS pay_period_started_at, pay_periods.ended_at AS pay_period_ended_at")
+      .where(pay_periods: { id: pay_period.id })
+      .order("timesheet_entries.created_at ASC")
   end
 
   def total_hours_worked
     timesheet_entries.current.sum { |entry| entry.hours_worked || 0 }
   end
-  
+
   def full_name
     "#{first_name} #{last_name}"
   end

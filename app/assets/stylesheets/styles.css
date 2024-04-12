@@ -1,0 +1,46 @@
+/* styles.css */
+
+/* Center the container */
+.container-fluid {
+  display: flex;
+  justify-content: center;
+}
+
+/* Style the card */
+.card {
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the profile picture */
+.profile-picture {
+  width: 100px;
+  height: 100px;
+  border: 3px solid #fff;
+}
+
+/* Style the card title */
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Style the text */
+.card-text {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+/* Style the manager text */
+.manager-text {
+  font-style: italic;
+  color: #666;
+}
+
+/* Style the HR element */
+hr {
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
+}

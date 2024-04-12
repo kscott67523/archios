@@ -1,27 +1,40 @@
-<div class="row mb-4"> <!-- Changed container to row -->
-  <div class="col-md-6 offset-md-3">
-    <div class="d-flex">
-      <div class="flex-shrink-0">
-        <div class="accordion accordion-flush" id="accordionFlushExample">
-          <div class="accordion-item" >
-            <h2 class="accordion-header">
+<div class="container-fluid p-3">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          Most Recent Timesheet
+        </div>
+        <div class="card-body">
+          <% if timesheet_entry %>
+            <div class="accordion-item">
+              <h5 class="accordion-header"><%= timesheet_entry.started_at.strftime("%A, %B %d, %Y") %></h5>
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= timesheet_entry.id %>" aria-expanded="false" aria-controls="collapse<%= timesheet_entry.id %>">
-                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                </h2>
-
-                <div class="accordion-body" id="<%= dom_id(@timesheet_entry) %>">
-                  <%= timesheet_entry.started_at.strftime("%b %d %l:%M%P") %> - <%= timesheet_entry.ended_at ? timesheet_entry.ended_at.strftime("%l:%M%P") : "Present" %>
-                  <span class="badge rounded-pill bg-<%= timesheet_entry.entry_approval_status == "approved" ? "success" : timesheet_entry.entry_approval_status == "submitted" ? "warning" : "danger" %> ms-2">
-                    <%= timesheet_entry.entry_approval_status %>
-                  </span>
-                </button>
-                <%= link_to "Edit", edit_timesheet_entry_path(timesheet_entry), method: :post, class: "btn btn-dark p-2" %>
-                <%= link_to "Delete", timesheet_entry_path(timesheet_entry), method: :delete, data: { turbo_method: :delete }, class: "btn btn-dark p-2" %>
+                <%= timesheet_entry.started_at.strftime("%b %d %l:%M%P") %> - <%= timesheet_entry.ended_at ? timesheet_entry.ended_at.strftime("%l:%M%P") : "Present" %>
+                <span class="badge rounded-pill bg-<%= timesheet_badge_color(timesheet_entry.entry_approval_status) %> ms-2"><%= timesheet_entry.entry_approval_status %></span>
+              </button>
+              <div id="collapse<%= timesheet_entry.id %>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  <%= render partial: 'timesheet_entries/form', locals: { timesheet_entry: timesheet_entry } %>
+                  <%= link_to "Delete", timesheet_entry, method: :destroy, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+                </div>
               </div>
             </div>
-          </div>
+          <% else %>
+            <p>-</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          Hours Worked This Pay Period
+        </div>
+        <div class="card-body">
+          <h1><%= @employee.total_hours_worked.to_f %> hours</h1>
         </div>
       </div>
     </div>
   </div>
-</li>
+</div>
