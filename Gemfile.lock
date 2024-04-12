@@ -465,6 +465,7 @@ DEPENDENCIES
   rufo
   selenium-webdriver
   shakapacker (= 7.2)
+  simple_form (~> 5.2)
   specs_to_readme
   sprockets-rails
   sqlite3 (~> 1.4)
