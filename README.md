@@ -4,7 +4,7 @@ Archios is a sophisticated timesheet application that simplifies time tracking f
 
 ## Features
 
-- **Email Clock-In**: Easily clock in and out using simple commands, also known as our **t-mail function**.
+- **Email Clock-In**: Easily clock in and out using simple commands, also known as our **t-mail** function.
 - **Managerial Dashboard**:
     - Everything included with the employee dashboard plus
         - **Informational armor:** Be ready for that status update with a snapshot of your team's status at once with no operational overhead:
