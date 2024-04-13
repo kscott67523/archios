@@ -6,7 +6,15 @@
 
 # Ignore bundler config.
 /.bundle
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ./vendor/bundle
+=======
+/vendor/bundle
+>>>>>>> Stashed changes
+=======
+/vendor/bundle
+>>>>>>> Stashed changes
 
 # Ignore all logfiles and tempfiles.
 /log/*
