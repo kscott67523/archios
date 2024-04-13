@@ -9,7 +9,7 @@
       </div>
     </div>
 
-    <%= render 'statuses/form', employee_id: @employee.id %>
+    <%= render 'statuses/form', status: Status.new(employee_id: @employee.id) %>
 
     <%= render 'timesheet_entries/form', timesheet_entry: @employee.timesheet_entries.last%>
 

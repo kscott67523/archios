@@ -18,13 +18,12 @@ class StatusesController < ApplicationController
   # POST /statuses or /statuses.json
   def create
     if current_employee.status.nil?
-      @status = Status.new(status_params)
-      @status.employee = current_employee
+      @status = Status.new(employee_id: current_employee.id)
     else
       @status = current_employee.status
       @status.update(text: params[:text])
     end
-  
+
     if @status.save
       # Handle successful save
       redirect_to employee_path(@status.employee_id)
@@ -32,7 +31,7 @@ class StatusesController < ApplicationController
       # Handle validation errors
       render :new, status: :unprocessable_entity
     end
-  end  
+  end
 
   # PATCH/PUT /statuses/1 or /statuses/1.json
   def update
@@ -42,9 +41,9 @@ class StatusesController < ApplicationController
           format.html { redirect_to employee_url(@status.employee_id), notice: "Status was successfully updated." }
           format.json { render :show, status: :ok, location: @status }
         end
-        else
-          format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @status.errors, status: :unprocessable_entity }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @status.errors, status: :unprocessable_entity }
       end
     end
   end

@@ -1,0 +1,19 @@
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/debug-1.9.2/ext/debug
+/home/student/.rvm/rubies/ruby-3.2.1/bin/ruby -I /home/student/.rvm/rubies/ruby-3.2.1/lib/ruby/3.2.0 extconf.rb
+creating Makefile
+
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/debug-1.9.2/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240413-42419-okq3ns sitelibdir\=./.gem.20240413-42419-okq3ns clean
+
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/debug-1.9.2/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240413-42419-okq3ns sitelibdir\=./.gem.20240413-42419-okq3ns
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/debug-1.9.2/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240413-42419-okq3ns sitelibdir\=./.gem.20240413-42419-okq3ns install
+/usr/bin/install -m 0755 debug.so ./.gem.20240413-42419-okq3ns/debug
+
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/debug-1.9.2/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240413-42419-okq3ns sitelibdir\=./.gem.20240413-42419-okq3ns clean

@@ -1,0 +1,27 @@
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/io-console-0.7.2/ext/io/console
+/home/student/.rvm/rubies/ruby-3.2.1/bin/ruby -I /home/student/.rvm/rubies/ruby-3.2.1/lib/ruby/3.2.0 extconf.rb
+checking for rb_io_path()... no
+checking for rb_io_descriptor()... yes
+checking for rb_io_get_write_io()... yes
+checking for rb_io_closed_p()... no
+checking for rb_io_open_descriptor()... no
+checking for termios.h... yes
+checking for cfmakeraw() in termios.h... yes
+checking for sys/ioctl.h... yes
+checking for HAVE_RUBY_FIBER_SCHEDULER_H... yes
+creating Makefile
+
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/io-console-0.7.2/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20240413-42419-dacees sitelibdir\=./.gem.20240413-42419-dacees clean
+
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/io-console-0.7.2/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20240413-42419-dacees sitelibdir\=./.gem.20240413-42419-dacees
+compiling console.c
+linking shared-object io/console.so
+
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/io-console-0.7.2/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20240413-42419-dacees sitelibdir\=./.gem.20240413-42419-dacees install
+/usr/bin/install -m 0755 console.so ./.gem.20240413-42419-dacees/io
+
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/io-console-0.7.2/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20240413-42419-dacees sitelibdir\=./.gem.20240413-42419-dacees clean

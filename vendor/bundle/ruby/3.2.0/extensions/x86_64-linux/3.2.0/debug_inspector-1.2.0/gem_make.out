@@ -1,0 +1,18 @@
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/debug_inspector-1.2.0/ext/debug_inspector
+/home/student/.rvm/rubies/ruby-3.2.1/bin/ruby -I /home/student/.rvm/rubies/ruby-3.2.1/lib/ruby/3.2.0 extconf.rb
+creating Makefile
+
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/debug_inspector-1.2.0/ext/debug_inspector
+make DESTDIR\= sitearchdir\=./.gem.20240413-42419-l9k9i4 sitelibdir\=./.gem.20240413-42419-l9k9i4 clean
+
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/debug_inspector-1.2.0/ext/debug_inspector
+make DESTDIR\= sitearchdir\=./.gem.20240413-42419-l9k9i4 sitelibdir\=./.gem.20240413-42419-l9k9i4
+compiling debug_inspector.c
+linking shared-object debug_inspector.so
+
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/debug_inspector-1.2.0/ext/debug_inspector
+make DESTDIR\= sitearchdir\=./.gem.20240413-42419-l9k9i4 sitelibdir\=./.gem.20240413-42419-l9k9i4 install
+/usr/bin/install -m 0755 debug_inspector.so ./.gem.20240413-42419-l9k9i4
+
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/debug_inspector-1.2.0/ext/debug_inspector
+make DESTDIR\= sitearchdir\=./.gem.20240413-42419-l9k9i4 sitelibdir\=./.gem.20240413-42419-l9k9i4 clean

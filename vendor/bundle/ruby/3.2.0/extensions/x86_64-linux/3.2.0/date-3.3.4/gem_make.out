@@ -1,0 +1,24 @@
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/date-3.3.4/ext/date
+/home/student/.rvm/rubies/ruby-3.2.1/bin/ruby -I /home/student/.rvm/rubies/ruby-3.2.1/lib/ruby/3.2.0 extconf.rb
+checking for rb_category_warn()... yes
+checking for timezone in time.h with  -Werror... yes
+checking for altzone in time.h with  -Werror... no
+creating Makefile
+
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/date-3.3.4/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20240413-32723-qvc4f0 sitelibdir\=./.gem.20240413-32723-qvc4f0 clean
+
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/date-3.3.4/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20240413-32723-qvc4f0 sitelibdir\=./.gem.20240413-32723-qvc4f0
+compiling date_core.c
+compiling date_parse.c
+compiling date_strftime.c
+compiling date_strptime.c
+linking shared-object date_core.so
+
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/date-3.3.4/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20240413-32723-qvc4f0 sitelibdir\=./.gem.20240413-32723-qvc4f0 install
+/usr/bin/install -m 0755 date_core.so ./.gem.20240413-32723-qvc4f0
+
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/date-3.3.4/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20240413-32723-qvc4f0 sitelibdir\=./.gem.20240413-32723-qvc4f0 clean

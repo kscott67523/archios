@@ -1,0 +1,18 @@
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/stringio-3.1.0/ext/stringio
+/home/student/.rvm/rubies/ruby-3.2.1/bin/ruby -I /home/student/.rvm/rubies/ruby-3.2.1/lib/ruby/3.2.0 extconf.rb
+creating Makefile
+
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/stringio-3.1.0/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20240413-42419-ohaz6n sitelibdir\=./.gem.20240413-42419-ohaz6n clean
+
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/stringio-3.1.0/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20240413-42419-ohaz6n sitelibdir\=./.gem.20240413-42419-ohaz6n
+compiling stringio.c
+linking shared-object stringio.so
+
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/stringio-3.1.0/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20240413-42419-ohaz6n sitelibdir\=./.gem.20240413-42419-ohaz6n install
+/usr/bin/install -m 0755 stringio.so ./.gem.20240413-42419-ohaz6n
+
+current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/stringio-3.1.0/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20240413-42419-ohaz6n sitelibdir\=./.gem.20240413-42419-ohaz6n clean

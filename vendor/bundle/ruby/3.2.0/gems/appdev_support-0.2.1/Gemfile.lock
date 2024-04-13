@@ -1,0 +1,41 @@
+PATH
+  remote: .
+  specs:
+    appdev_support (0.2.1)
+      tabulo
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    diff-lcs (1.5.0)
+    rake (12.3.3)
+    rspec (3.12.0)
+      rspec-core (~> 3.12.0)
+      rspec-expectations (~> 3.12.0)
+      rspec-mocks (~> 3.12.0)
+    rspec-core (3.12.2)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.5)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-support (3.12.0)
+    tabulo (2.8.2)
+      tty-screen (= 0.8.1)
+      unicode-display_width (~> 2.2)
+    tty-screen (0.8.1)
+    unicode-display_width (2.4.2)
+
+PLATFORMS
+  x86_64-linux
+
+DEPENDENCIES
+  appdev_support!
+  rake (~> 12.0)
+  rspec (~> 3.0)
+  tabulo
+
+BUNDLED WITH
+   2.2.3
