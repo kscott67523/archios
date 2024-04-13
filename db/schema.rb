@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_12_041612) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_13_003051) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,7 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_12_041612) do
     t.bigint "company_id", null: false
     t.integer "manager_id"
     t.string "phone_number"
-    t.boolean "has_sms"
+    t.boolean "has_tmail"
     t.string "profile_picture"
     t.string "time_zone"
     t.string "email", default: "", null: false
@@ -38,6 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_12_041612) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "What are you up to?"
     t.index ["company_id"], name: "index_employees_on_company_id"
     t.index ["email"], name: "index_employees_on_email", unique: true
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
@@ -62,7 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_12_041612) do
   end
 
   create_table "statuses", force: :cascade do |t|
-    t.string "text"
+    t.string "text", default: "What are you up to?"
     t.bigint "employee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

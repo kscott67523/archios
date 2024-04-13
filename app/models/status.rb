@@ -3,7 +3,7 @@
 # Table name: statuses
 #
 #  id          :bigint           not null, primary key
-#  text        :string
+#  text        :string           default("What are you up to?")
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  employee_id :bigint
@@ -17,5 +17,5 @@
 #  fk_rails_...  (employee_id => employees.id)
 #
 class Status < ApplicationRecord
-  belongs_to :employee
+  belongs_to :employee, class_name: "Employees", foreign_key: :employee_id
 end

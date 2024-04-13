@@ -6,7 +6,7 @@
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  first_name             :string
-#  has_sms                :boolean
+#  has_tmail              :boolean
 #  last_name              :string
 #  phone_number           :string
 #  profile_picture        :string
@@ -14,6 +14,7 @@
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
 #  role                   :string
+#  status                 :string           default("What are you up to?")
 #  time_zone              :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -57,7 +58,6 @@ class Employee < ApplicationRecord
   has_many :messages, foreign_key: :sender_id
   has_many :employees, class_name: "Employee", foreign_key: "manager_id"
   has_one :status, foreign_key: :employee_id
-
   scope :managers, -> { where(role: roles[:manager]) }
 
   def dashboard

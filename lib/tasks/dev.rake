@@ -4,6 +4,7 @@ task sample_data: :environment do
     TimesheetEntry.destroy_all
     PayPeriod.destroy_all
     Request.destroy_all
+    Status.destroy_all
     Employee.destroy_all
     Company.destroy_all
 

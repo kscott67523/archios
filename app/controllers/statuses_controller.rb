@@ -18,12 +18,13 @@ class StatusesController < ApplicationController
   # POST /statuses or /statuses.json
   def create
     if current_employee.status.nil?
-      @status = Status.new(status_params)
-      @status.employee = current_employee
+      @status = Status.new(employee_id: current_employee.id)
+
     else
       @status = current_employee.status
-      @status.update(text: params[:text])
+      @status.update(text: params[:text]) # Assuming 'text' is the parameter you want to update
     end
+  
   
     if @status.save
       # Handle successful save
