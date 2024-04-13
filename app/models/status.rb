@@ -17,5 +17,5 @@
 #  fk_rails_...  (employee_id => employees.id)
 #
 class Status < ApplicationRecord
-  belongs_to :employee, class_name: "Employees", foreign_key: :employee_id
+  belongs_to :employee, class_name: "Employee", foreign_key: :employee_id
 end
