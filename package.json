@@ -10,6 +10,7 @@
     "babel-loader": "^8.2.4",
     "compression-webpack-plugin": "^9.0.0",
     "gulp": "^5.0.0",
+    "node": "^18.20.2",
     "shakapacker": "7.2.0",
     "terser-webpack-plugin": "^5.1.0",
     "webpack": "^5.72.0",
@@ -29,6 +30,7 @@
   ],
   "devDependencies": {
     "@babel/plugin-syntax-jsx": "^7.24.1",
+    "babel-cli": "^6.26.0",
     "webpack-dev-server": "4"
   },
   "scripts": {
