@@ -13,7 +13,7 @@
                 <%= employee.full_name %>
               </h2>
               <% if employee.manager == current_employee %>
-                <%= render "subordinates", employee: @employee %>
+                <%= render "subordinates", employee: employee %>
               <% end %>
               <hr>
               <p class="card-text text-muted">
@@ -22,11 +22,6 @@
               <p class="card-text">
                 <%= employee.role.capitalize %>
               </p>
-              <% if employee.manager.present? %>
-                <p class="card-text">
-                  Manager: <%= employee.manager.full_name %>
-                </p>
-              <% end %>
             </div>
           </div>
         </div>

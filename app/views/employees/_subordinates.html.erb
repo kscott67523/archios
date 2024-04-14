@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12 justify-content-start p-3">
       <div>
-        <%= raw clock_status(employee) %>
+        <%= render "statuses/status", employee: employee %>
       </div>
       <div class="media-body">
         <p class="card-text text-muted">

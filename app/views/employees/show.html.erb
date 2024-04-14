@@ -16,12 +16,14 @@
     <%= render "timesheet_entries/timesheet_entry", timesheet_entry: @employee.timesheet_entries.last %>
 
     <% if current_employee.manager? && current_employee.employees.present? %>
-      <h2 class="card-title">
-        My Employees
-      </h2>
-      <%= current_employee.employees.each do |employee| %>
-        <%= render "employee", employee: employee %>
-      <% end %>
-    <% end %>
-  </div>
-</div>
+      <div>
+        <h2 class="card-title">
+          My Employees
+        </h2>
+        <div>
+          <% current_employee.employees.each do |employee| %>
+            <%= render "employee", employee: employee %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
