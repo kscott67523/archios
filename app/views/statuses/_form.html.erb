@@ -1,16 +1,4 @@
 <div class="row">
-  <% if @status && @status.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@status.errors.count, "error") %> prohibited this @status from being saved:</h2>
-
-      <ul>
-        <% @status.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <%= form_with(model: @status, local: false, url: statuses_path(@status), method: :post, remote: true, id: "status_form") do |form| %>
     <div>
       <%= form.hidden_field :employee_id, value: @employee.id %>

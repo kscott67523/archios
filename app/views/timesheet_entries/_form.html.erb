@@ -1,42 +1,18 @@
-<div class="container-fluid p-3">
-  <div class="row justify-content-center">
-    <div class="col-md-6 align-items-center">
-      <div class="card">
-        <div class="card-body text-center">
-          <% if @timesheet_entry && @timesheet_entry.errors.any? %>
-            <div id="error_explanation">
-              <ul class="list-unstyled">
-                <% @timesheet_entry.errors.each do |error| %>
-                  <li>
-                    <div class="alert alert-danger" role="alert">
-                      <%= error.full_message %>
-                    </div>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
-
           <%= render "statuses/status", employee: @employee %>
 
-          <div class="mt-4">
-            <%= form_with(model: TimesheetEntry, local: false, url: timesheet_entries_path, method: :post, remote: true, id: "timesheet_entry_form") do |form| %>
-              <%= form.hidden_field :employee_id, value: @employee.id %>
-              <%= form.hidden_field :pay_period_id, value: PayPeriod.last.id %>
+<div class="mt-4">
+  <%= form_with(model: TimesheetEntry, local: false, url: timesheet_entries_path, method: :post, remote: true, id: "timesheet_entry_form") do |form| %>
+    <%= form.hidden_field :employee_id, value: @employee.id %>
+    <%= form.hidden_field :pay_period_id, value: PayPeriod.current %>
 
-              <% if @employee.timesheet_entries.any? && @employee.timesheet_entries.last.ended_at.nil? %>
-                <%= form.hidden_field :timesheet_entry, value: employee.last_entry.id %>
-                <%= form.hidden_field :started_at, value: @employee.timesheet_entries.last.started_at %>
-                <%= form.hidden_field :ended_at, value: Time.now %>
-                <%= form.submit "Clock Out", class: "btn btn-danger btn-block", id: "clock_button" %>
-              <% else %>
-                <%= form.hidden_field :started_at, value: Time.now %>
-                <%= form.submit "Clock In", class: "btn btn-success btn-block", id: "clock_button" %>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    <% if @employee.timesheet_entries.present? && @employee.last_entry.ended_at.nil? %>
+      <%= form.hidden_field :timesheet_entry, value: @employee.last_entry.id %>
+      <%= form.hidden_field :started_at, value: @employee.timesheet_entries.last.started_at %>
+      <%= form.hidden_field :ended_at, value: Time.now %>
+      <%= form.submit "Clock Out", class: "btn btn-danger-subtle btn-block", id: "clock_button" %>
+    <% else %>
+      <%= form.hidden_field :started_at, value: Time.now %>
+      <%= form.submit "Clock In", class: "btn btn-success btn-block", id: "clock_button" %>
+    <% end %>
+  <% end %>
 </div>
