@@ -4,21 +4,12 @@
 #
 # Table name: requests
 #
-#  id                 :bigint           not null, primary key
-#  request_body       :text
-#  request_type       :string
-#  status             :integer          default(NULL)
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
-#  timesheet_entry_id :bigint           not null
-#
-# Indexes
-#
-#  index_requests_on_timesheet_entry_id  (timesheet_entry_id)
-#
-# Foreign Keys
-#
-#  fk_rails_...  (timesheet_entry_id => timesheet_entries.id)
+#  id           :bigint           not null, primary key
+#  email        :string
+#  request_body :text
+#  status       :integer          default(NULL)
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
 #
 class Request < ApplicationRecord
   # Associations

@@ -8,10 +8,10 @@
         <%= render "employee", employee: @employee, dom_id: dom_id(@employee) %>
       </div>
     </div>
-
+    
     <%= render 'statuses/form', status: Status.new(employee_id: @employee.id) %>
 
-    <%= render 'timesheet_entries/form', timesheet_entry: @employee.timesheet_entries.last%>
+    <%= render 'timesheet_entries/form', timesheet_entry: @employee.last_entry %>
 
     <%= render "timesheet_entries/timesheet_entry", timesheet_entry: @employee.timesheet_entries.last %>
 

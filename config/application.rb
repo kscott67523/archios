@@ -19,6 +19,8 @@ module RailsTemplate
     # in config/environments, which are processed later.
     #
     config.time_zone = 'Central Time (US & Canada)'
+    config.active_job.queue_adapter = :sidekiq
+
     # config.eager_load_paths << Rails.root.join("extras")
     config.generators do |g|
       g.test_framework nil
@@ -31,10 +33,8 @@ module RailsTemplate
 
     config.action_controller.default_protect_from_forgery = false
     config.generators.system_tests = nil
+
     config.action_mailer.delivery_method = :postmark
-config.action_mailer.postmark_settings = { :api_token => Rails.application.secrets.postmark_api_token }
+config.action_mailer.postmark_settings = { :api_token => ENV['POSTMARK_API_TOKEN'] }
   end
 end
-
-
-

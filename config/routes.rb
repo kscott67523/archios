@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  post '/requests', to: 'requests#requests'
   resources :statuses
   resources :requests
   devise_for :employees, controllers: { registrations: 'registrations' }
