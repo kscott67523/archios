@@ -3,10 +3,10 @@ current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/websocket-d
 creating Makefile
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.7.6/ext/websocket-driver
-make DESTDIR\= sitearchdir\=./.gem.20240413-32723-5htrwh sitelibdir\=./.gem.20240413-32723-5htrwh clean
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-3la8yx sitelibdir\=./.gem.20240413-123876-3la8yx clean
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.7.6/ext/websocket-driver
-make DESTDIR\= sitearchdir\=./.gem.20240413-32723-5htrwh sitelibdir\=./.gem.20240413-32723-5htrwh
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-3la8yx sitelibdir\=./.gem.20240413-123876-3la8yx
 compiling websocket_mask.c
 websocket_mask.c: In function ‘Init_websocket_mask’:
 websocket_mask.c:26:6: warning: old-style function definition [-Wold-style-definition]
@@ -19,8 +19,8 @@ cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand�
 linking shared-object websocket_mask.so
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.7.6/ext/websocket-driver
-make DESTDIR\= sitearchdir\=./.gem.20240413-32723-5htrwh sitelibdir\=./.gem.20240413-32723-5htrwh install
-/usr/bin/install -m 0755 websocket_mask.so ./.gem.20240413-32723-5htrwh
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-3la8yx sitelibdir\=./.gem.20240413-123876-3la8yx install
+/usr/bin/install -m 0755 websocket_mask.so ./.gem.20240413-123876-3la8yx
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.7.6/ext/websocket-driver
-make DESTDIR\= sitearchdir\=./.gem.20240413-32723-5htrwh sitelibdir\=./.gem.20240413-32723-5htrwh clean
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-3la8yx sitelibdir\=./.gem.20240413-123876-3la8yx clean

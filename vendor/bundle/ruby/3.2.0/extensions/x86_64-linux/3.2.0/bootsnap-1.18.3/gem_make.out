@@ -7,16 +7,16 @@ checking for whether -std=c99 is accepted as CFLAGS... yes
 creating Makefile
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.18.3/ext/bootsnap
-make DESTDIR\= sitearchdir\=./.gem.20240413-9655-spcois sitelibdir\=./.gem.20240413-9655-spcois clean
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-b6ddpq sitelibdir\=./.gem.20240413-123876-b6ddpq clean
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.18.3/ext/bootsnap
-make DESTDIR\= sitearchdir\=./.gem.20240413-9655-spcois sitelibdir\=./.gem.20240413-9655-spcois
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-b6ddpq sitelibdir\=./.gem.20240413-123876-b6ddpq
 compiling bootsnap.c
 linking shared-object bootsnap/bootsnap.so
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.18.3/ext/bootsnap
-make DESTDIR\= sitearchdir\=./.gem.20240413-9655-spcois sitelibdir\=./.gem.20240413-9655-spcois install
-/usr/bin/install -m 0755 bootsnap.so ./.gem.20240413-9655-spcois/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-b6ddpq sitelibdir\=./.gem.20240413-123876-b6ddpq install
+/usr/bin/install -m 0755 bootsnap.so ./.gem.20240413-123876-b6ddpq/bootsnap
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.18.3/ext/bootsnap
-make DESTDIR\= sitearchdir\=./.gem.20240413-9655-spcois sitelibdir\=./.gem.20240413-9655-spcois clean
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-b6ddpq sitelibdir\=./.gem.20240413-123876-b6ddpq clean

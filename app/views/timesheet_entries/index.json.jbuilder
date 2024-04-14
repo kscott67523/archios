@@ -1,1 +1,3 @@
-json.array! @timesheet_entries, partial: "timesheet_entries/timesheet_entry", as: :timesheet_entry
+# frozen_string_literal: true
+
+json.array! @timesheet_entries, partial: 'timesheet_entries/timesheet_entry', as: :timesheet_entry

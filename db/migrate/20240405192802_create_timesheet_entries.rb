@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateTimesheetEntries < ActiveRecord::Migration[7.0]
   def change
     create_table :timesheet_entries do |t|
@@ -8,9 +10,8 @@ class CreateTimesheetEntries < ActiveRecord::Migration[7.0]
       t.text :comments
       t.string :entry_approval_status
       t.references :pay_period, foreign_key: true
- 
+
       t.timestamps
     end
   end
- end
- 
+end

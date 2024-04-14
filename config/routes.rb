@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   resources :statuses
   resources :requests
-  devise_for :employees, controllers: { registrations: "registrations" }
+  devise_for :employees, controllers: { registrations: 'registrations' }
 
   authenticated :employee do
-    root to: "employees#show", as: :authenticated_root
+    root to: 'employees#show', as: :authenticated_root
     resources :statuses
   end
 
-  root "home#index"
+  root 'home#index'
 
   resources :messages
   resources :companies

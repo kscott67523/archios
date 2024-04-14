@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 class StatusesController < ApplicationController
-  before_action :set_status, only: %i[ show edit update destroy ]
+  before_action :set_status, only: %i[show edit update destroy]
 
   # GET /statuses/1 or /statuses/1.json
-  def show
-  end
+  def show; end
 
   # GET /statuses/new
   def new
@@ -12,8 +13,7 @@ class StatusesController < ApplicationController
   end
 
   # GET /statuses/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /statuses or /statuses.json
   def create
@@ -38,7 +38,7 @@ class StatusesController < ApplicationController
     respond_to do |format|
       if @status.update(status_params)
         respond_to do |format|
-          format.html { redirect_to employee_url(@status.employee_id), notice: "Status was successfully updated." }
+          format.html { redirect_to employee_url(@status.employee_id), notice: 'Status was successfully updated.' }
           format.json { render :show, status: :ok, location: @status }
         end
       else
@@ -53,7 +53,7 @@ class StatusesController < ApplicationController
     @status.destroy
 
     respond_to do |format|
-      format.html { redirect_to statuses_url, notice: "Status was successfully destroyed." }
+      format.html { redirect_to statuses_url, notice: 'Status was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -10,10 +10,10 @@ checking for rb_hash_bulk_insert() in ruby.h... yes
 creating Makefile
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/oj-3.13.23/ext/oj
-make DESTDIR\= sitearchdir\=./.gem.20240413-42419-697k5 sitelibdir\=./.gem.20240413-42419-697k5 clean
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-xk19ez sitelibdir\=./.gem.20240413-123876-xk19ez clean
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/oj-3.13.23/ext/oj
-make DESTDIR\= sitearchdir\=./.gem.20240413-42419-697k5 sitelibdir\=./.gem.20240413-42419-697k5
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-xk19ez sitelibdir\=./.gem.20240413-123876-xk19ez
 compiling cache.c
 compiling cache8.c
 compiling circarray.c
@@ -64,8 +64,8 @@ compiling wab.c
 linking shared-object oj/oj.so
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/oj-3.13.23/ext/oj
-make DESTDIR\= sitearchdir\=./.gem.20240413-42419-697k5 sitelibdir\=./.gem.20240413-42419-697k5 install
-/usr/bin/install -m 0755 oj.so ./.gem.20240413-42419-697k5/oj
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-xk19ez sitelibdir\=./.gem.20240413-123876-xk19ez install
+/usr/bin/install -m 0755 oj.so ./.gem.20240413-123876-xk19ez/oj
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/oj-3.13.23/ext/oj
-make DESTDIR\= sitearchdir\=./.gem.20240413-42419-697k5 sitelibdir\=./.gem.20240413-42419-697k5 clean
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-xk19ez sitelibdir\=./.gem.20240413-123876-xk19ez clean

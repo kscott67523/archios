@@ -5,13 +5,13 @@ checking for yaml_get_version() in -lyaml... yes
 creating Makefile
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/psych-5.1.2/ext/psych
-make DESTDIR\= sitearchdir\=./.gem.20240413-42419-y1iber sitelibdir\=./.gem.20240413-42419-y1iber clean
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-l0gr0 sitelibdir\=./.gem.20240413-123876-l0gr0 clean
 cd libyaml && make clean
 /bin/sh: 1: cd: can't cd to libyaml
 make: [Makefile:283: clean-so] Error 2 (ignored)
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/psych-5.1.2/ext/psych
-make DESTDIR\= sitearchdir\=./.gem.20240413-42419-y1iber sitelibdir\=./.gem.20240413-42419-y1iber
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-l0gr0 sitelibdir\=./.gem.20240413-123876-l0gr0
 compiling psych.c
 compiling psych_emitter.c
 compiling psych_parser.c
@@ -20,11 +20,11 @@ compiling psych_yaml_tree.c
 linking shared-object psych.so
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/psych-5.1.2/ext/psych
-make DESTDIR\= sitearchdir\=./.gem.20240413-42419-y1iber sitelibdir\=./.gem.20240413-42419-y1iber install
-/usr/bin/install -m 0755 psych.so ./.gem.20240413-42419-y1iber
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-l0gr0 sitelibdir\=./.gem.20240413-123876-l0gr0 install
+/usr/bin/install -m 0755 psych.so ./.gem.20240413-123876-l0gr0
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/psych-5.1.2/ext/psych
-make DESTDIR\= sitearchdir\=./.gem.20240413-42419-y1iber sitelibdir\=./.gem.20240413-42419-y1iber clean
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-l0gr0 sitelibdir\=./.gem.20240413-123876-l0gr0 clean
 cd libyaml && make clean
 /bin/sh: 1: cd: can't cd to libyaml
 make: [Makefile:283: clean-so] Error 2 (ignored)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: companies
@@ -10,7 +12,7 @@
 #
 class Company < ApplicationRecord
   has_many :employees
-  has_many :managers, -> { where(role: :manager) }, class_name: "Employee"
+  has_many :managers, -> { where(role: :manager) }, class_name: 'Employee'
 
   validates :name, presence: true
 end

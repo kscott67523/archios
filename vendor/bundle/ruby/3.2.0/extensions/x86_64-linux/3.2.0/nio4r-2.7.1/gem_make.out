@@ -13,10 +13,10 @@ checking for sys/resource.h... yes
 creating Makefile
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/nio4r-2.7.1/ext/nio4r
-make DESTDIR\= sitearchdir\=./.gem.20240413-32723-c32q2p sitelibdir\=./.gem.20240413-32723-c32q2p clean
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-rziu66 sitelibdir\=./.gem.20240413-123876-rziu66 clean
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/nio4r-2.7.1/ext/nio4r
-make DESTDIR\= sitearchdir\=./.gem.20240413-32723-c32q2p sitelibdir\=./.gem.20240413-32723-c32q2p
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-rziu66 sitelibdir\=./.gem.20240413-123876-rziu66
 compiling bytebuffer.c
 bytebuffer.c: In function ‘Init_NIO_ByteBuffer’:
 bytebuffer.c:59:6: warning: old-style function definition [-Wold-style-definition]
@@ -285,8 +285,8 @@ cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand�
 linking shared-object nio4r_ext.so
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/nio4r-2.7.1/ext/nio4r
-make DESTDIR\= sitearchdir\=./.gem.20240413-32723-c32q2p sitelibdir\=./.gem.20240413-32723-c32q2p install
-/usr/bin/install -m 0755 nio4r_ext.so ./.gem.20240413-32723-c32q2p
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-rziu66 sitelibdir\=./.gem.20240413-123876-rziu66 install
+/usr/bin/install -m 0755 nio4r_ext.so ./.gem.20240413-123876-rziu66
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/nio4r-2.7.1/ext/nio4r
-make DESTDIR\= sitearchdir\=./.gem.20240413-32723-c32q2p sitelibdir\=./.gem.20240413-32723-c32q2p clean
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-rziu66 sitelibdir\=./.gem.20240413-123876-rziu66 clean

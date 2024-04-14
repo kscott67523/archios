@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: statuses
 #
 #  id          :bigint           not null, primary key
-#  text        :string
+#  text        :string           default("What are you up to?")
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  employee_id :bigint

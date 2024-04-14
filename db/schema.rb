@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,82 +12,82 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_12_041612) do
+ActiveRecord::Schema[7.0].define(version: 20_240_413_003_051) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "companies", force: :cascade do |t|
-    t.string "name"
-    t.string "logo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'companies', force: :cascade do |t|
+    t.string 'name'
+    t.string 'logo'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "employees", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "role"
-    t.bigint "company_id", null: false
-    t.integer "manager_id"
-    t.string "phone_number"
-    t.boolean "has_sms"
-    t.string "profile_picture"
-    t.string "time_zone"
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_employees_on_company_id"
-    t.index ["email"], name: "index_employees_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
+  create_table 'employees', force: :cascade do |t|
+    t.string 'first_name'
+    t.string 'last_name'
+    t.string 'role'
+    t.bigint 'company_id', null: false
+    t.integer 'manager_id'
+    t.string 'phone_number'
+    t.boolean 'has_sms'
+    t.string 'profile_picture'
+    t.string 'time_zone'
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['company_id'], name: 'index_employees_on_company_id'
+    t.index ['email'], name: 'index_employees_on_email', unique: true
+    t.index ['reset_password_token'], name: 'index_employees_on_reset_password_token', unique: true
   end
 
-  create_table "pay_periods", force: :cascade do |t|
-    t.date "started_at"
-    t.date "ended_at"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'pay_periods', force: :cascade do |t|
+    t.date 'started_at'
+    t.date 'ended_at'
+    t.string 'name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "requests", force: :cascade do |t|
-    t.string "request_type"
-    t.text "request_body"
-    t.bigint "timesheet_entry_id", null: false
-    t.integer "status", default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["timesheet_entry_id"], name: "index_requests_on_timesheet_entry_id"
+  create_table 'requests', force: :cascade do |t|
+    t.string 'request_type'
+    t.text 'request_body'
+    t.bigint 'timesheet_entry_id', null: false
+    t.integer 'status', default: 0
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['timesheet_entry_id'], name: 'index_requests_on_timesheet_entry_id'
   end
 
-  create_table "statuses", force: :cascade do |t|
-    t.string "text"
-    t.bigint "employee_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["employee_id"], name: "index_statuses_on_employee_id"
+  create_table 'statuses', force: :cascade do |t|
+    t.string 'text', default: 'What are you up to?'
+    t.bigint 'employee_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['employee_id'], name: 'index_statuses_on_employee_id'
   end
 
-  create_table "timesheet_entries", force: :cascade do |t|
-    t.bigint "employee_id", null: false
-    t.datetime "started_at"
-    t.datetime "ended_at"
-    t.decimal "hours_worked"
-    t.text "comments"
-    t.string "entry_approval_status"
-    t.bigint "pay_period_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["employee_id"], name: "index_timesheet_entries_on_employee_id"
-    t.index ["pay_period_id"], name: "index_timesheet_entries_on_pay_period_id"
+  create_table 'timesheet_entries', force: :cascade do |t|
+    t.bigint 'employee_id', null: false
+    t.datetime 'started_at'
+    t.datetime 'ended_at'
+    t.decimal 'hours_worked'
+    t.text 'comments'
+    t.string 'entry_approval_status'
+    t.bigint 'pay_period_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['employee_id'], name: 'index_timesheet_entries_on_employee_id'
+    t.index ['pay_period_id'], name: 'index_timesheet_entries_on_pay_period_id'
   end
 
-  add_foreign_key "employees", "companies"
-  add_foreign_key "requests", "timesheet_entries"
-  add_foreign_key "statuses", "employees"
-  add_foreign_key "timesheet_entries", "employees"
-  add_foreign_key "timesheet_entries", "pay_periods"
+  add_foreign_key 'employees', 'companies'
+  add_foreign_key 'requests', 'timesheet_entries'
+  add_foreign_key 'statuses', 'employees'
+  add_foreign_key 'timesheet_entries', 'employees'
+  add_foreign_key 'timesheet_entries', 'pay_periods'
 end

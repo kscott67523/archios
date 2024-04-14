@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
-  before_action :authenticate_employee!, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_employee!, only: %i[show edit update destroy]
   skip_forgery_protection
 
   protected

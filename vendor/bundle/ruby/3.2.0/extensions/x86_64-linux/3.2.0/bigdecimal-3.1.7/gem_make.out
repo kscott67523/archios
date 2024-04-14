@@ -32,17 +32,17 @@ checking for RB_WARN_CATEGORY_DEPRECATED in ruby.h... yes
 creating Makefile
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/bigdecimal-3.1.7/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20240413-42419-qwsb6h sitelibdir\=./.gem.20240413-42419-qwsb6h clean
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-t69dzi sitelibdir\=./.gem.20240413-123876-t69dzi clean
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/bigdecimal-3.1.7/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20240413-42419-qwsb6h sitelibdir\=./.gem.20240413-42419-qwsb6h
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-t69dzi sitelibdir\=./.gem.20240413-123876-t69dzi
 compiling bigdecimal.c
 compiling missing.c
 linking shared-object bigdecimal.so
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/bigdecimal-3.1.7/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20240413-42419-qwsb6h sitelibdir\=./.gem.20240413-42419-qwsb6h install
-/usr/bin/install -m 0755 bigdecimal.so ./.gem.20240413-42419-qwsb6h
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-t69dzi sitelibdir\=./.gem.20240413-123876-t69dzi install
+/usr/bin/install -m 0755 bigdecimal.so ./.gem.20240413-123876-t69dzi
 
 current directory: /workspaces/archios/vendor/bundle/ruby/3.2.0/gems/bigdecimal-3.1.7/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20240413-42419-qwsb6h sitelibdir\=./.gem.20240413-42419-qwsb6h clean
+make DESTDIR\= sitearchdir\=./.gem.20240413-123876-t69dzi sitelibdir\=./.gem.20240413-123876-t69dzi clean

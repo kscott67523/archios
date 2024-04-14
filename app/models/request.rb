@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: requests
@@ -20,11 +22,11 @@
 #
 class Request < ApplicationRecord
   # Associations
-  belongs_to :timesheet_entry, foreign_key: "timesheet_entry_id"
-  
+  belongs_to :timesheet_entry, foreign_key: 'timesheet_entry_id'
+
   # Enumerations
-  enum status: { pending: "pending", successful: "successful", denied: "denied" }
-  
+  enum status: { pending: 'pending', successful: 'successful', denied: 'denied' }
+
   # Validations
   validates :request_type, presence: true
   validates :request_body, presence: true
