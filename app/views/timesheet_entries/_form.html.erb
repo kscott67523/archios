@@ -17,16 +17,7 @@
             </div>
           <% end %>
 
-          <% if @employee.timesheet_entries.any? %>
-            <% latest_entry = @employee.timesheet_entries.last %>
-            <% if latest_entry.ended_at.nil? %>
-              <p class="clock-status"><span class="badge bg-success"><i class="bi bi-check-circle-fill"></i> You are currently clocked in</span></p>
-            <% else %>
-              <p class="clock-status"><span class="badge bg-danger"><i class="bi bi-dash-circle-fill"></i> You are currently clocked out</span></p>
-            <% end %>
-          <% else %>
-            <p><%= @employee.first_name %> has no timesheet entries.</p>
-          <% end %>
+          <%= render "statuses/status", employee: @employee %>
 
           <div class="mt-4">
             <%= form_with(model: TimesheetEntry, local: false, url: timesheet_entries_path, method: :post, remote: true, id: "timesheet_entry_form") do |form| %>
@@ -34,7 +25,7 @@
               <%= form.hidden_field :pay_period_id, value: PayPeriod.last.id %>
 
               <% if @employee.timesheet_entries.any? && @employee.timesheet_entries.last.ended_at.nil? %>
-                <%= form.hidden_field :timesheet_entry, value: latest_entry.id %>
+                <%= form.hidden_field :timesheet_entry, value: employee.last_entry.id %>
                 <%= form.hidden_field :started_at, value: @employee.timesheet_entries.last.started_at %>
                 <%= form.hidden_field :ended_at, value: Time.now %>
                 <%= form.submit "Clock Out", class: "btn btn-danger btn-block", id: "clock_button" %>

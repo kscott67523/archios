@@ -5,19 +5,18 @@
         Timesheet
       </div>
       <div class="card-body">
-        <% if @employee.timesheet_entries.any? %>
-          <% latest_entry = @employee.timesheet_entries.last %>
-          <% if latest_entry %>
-            <div class="accordion-item">
-              <h5 class="accordion-header"><%= latest_entry.started_at.strftime("%A, %B %d, %Y") %></h5>
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= latest_entry.id %>" aria-expanded="false" aria-controls="collapse<%= latest_entry.id %>">
-                <%= latest_entry.started_at.strftime("%b %d %l:%M%P") %> - <%= latest_entry.ended_at ? latest_entry.ended_at.strftime("%l:%M%P") : "Present" %>
-                <span class="badge rounded-pill bg-<%= latest_entry.entry_approval_status == "approved" ? "success" : latest_entry.entry_approval_status == "submitted" ? "warning" : "danger" %> ms-2"><%= latest_entry.entry_approval_status %></span>
+        <% if employee.last_entry.present? %>
+          <div class="accordion-item">
+            <h5 class="accordion-header"><%= employee.last_entry.started_at.strftime("%A, %B %d, %Y") %></h5>
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= employee.last_entry.id %>" aria-expanded="false" aria-controls="collapse<%= employee.last_entry.id %>">
+              <%= employee.last_entry.started_at.strftime("%b %d %l:%M%P") %> - <%= employee.last_entry.ended_at ? employee.last_entry.ended_at.strftime("%l:%M%P") : "Present" %>
+              <span class="badge rounded-pill bg-<%= timesheet_badge_color(employee.last_entry) %></span>
               </button>
-              <div id="collapse<%= latest_entry.id %>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div id="collapse<%= employee.last_entry.id %>" class="accordion-collapse collapse" aria-labelledby="flush-heading<%= employee.last_entry.id %>" data-bs-parent="#accordionFlushExample">
+
                 <div class="accordion-body">
-                  <%= render partial: 'timesheet_entries/form', locals: { timesheet_entry: latest_entry } %>
-                  <%= link_to "Delete", latest_entry, method: :destroy, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+                  <%= render partial: 'timesheet_entries/form', locals: { timesheet_entry: employee.last_entry } %>
+                  <%= link_to "Delete", employee.last_entry, method: :destroy, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
                 </div>
               </div>
             </div>

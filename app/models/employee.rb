@@ -88,6 +88,27 @@ class Employee < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def clocked_in?
+    last_entry = timesheet_entries.last
+    last_entry.present? && last_entry.ended_at.nil?
+  end
+
+  def clock_in
+    return if clocked_in? # Don't allow clocking in if already clocked in
+    timesheet_entries.create(started_at: Time.now)
+  end
+
+  # Method to clock out
+  def clock_out
+    return unless clocked_in? # Don't allow clocking out if not clocked in
+    last_entry = timesheet_entries.last
+    last_entry.update(ended_at: Time.now)
+  end
+
+  def last_entry
+    timesheet_entries.last
+  end
+
   private
 
   def set_default_has_sms
