@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class TimesheetEntriesController < ApplicationController
   before_action :authenticate_employee!, only: %i[show edit update destroy]
   before_action :set_timesheet_entry, only: %i[show edit update destroy]
@@ -48,8 +46,9 @@ class TimesheetEntriesController < ApplicationController
 
     respond_to do |format|
       if @timesheet_entry.save
-        @employee.status.update!(text: 'Available')
-        format.html { redirect_to employee_path(@employee), notice: 'Timesheet entry was successfully created.' }
+        @employee.status.update!(text: "Available")
+        now = Time.now.strftime("%I:%M %p") # Store the formatted time in the now variable
+        format.html { redirect_to employee_path(@employee), notice: "You have clocked in at #{now}" }
         format.json { render :show, status: :created, location: @timesheet_entry }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -60,14 +59,16 @@ class TimesheetEntriesController < ApplicationController
 
   # PATCH/PUT /timesheet_entries/1 or /timesheet_entries/1.json
   def update
-    if @timesheet_entry.update(timesheet_entry_params)
-      respond_to do |format|
-        format.html { redirect_to employee_path(@employee), notice: 'Timesheet entry was successfully updated.' }
+    respond_to do |format|
+      if @timesheet_entry.update(timesheet_entry_params)
+        now = Time.now.strftime("%I:%M %p")
+        format.html { redirect_to employee_path(@employee), notice: "You have clocked out at #{now}." }
         format.js {} # This will render update.js.erb
+      else
+        format.html { render :edit }
       end
-    else
-      render :edit
     end
+    @employee.calculate_hours_worked
   end
 
   # DELETE /timesheet_entries/1 or /timesheet_entries/1.json
@@ -75,7 +76,7 @@ class TimesheetEntriesController < ApplicationController
     @timesheet_entry.destroy
 
     respond_to do |format|
-      format.html { redirect_to timesheet_entries_url, notice: 'Timesheet entry was successfully destroyed.' }
+      format.html { redirect_to timesheet_entries_url, notice: "Timesheet entry was successfully destroyed." }
       format.json { head :no_content }
     end
   end
