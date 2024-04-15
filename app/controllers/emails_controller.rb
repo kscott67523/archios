@@ -1,36 +1,48 @@
 # app/controllers/emails_controller.rb
 class EmailsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def receive
     puts "Received an email: #{params}"
 
     sender = params["sender"]
     body_plain = params["body-plain"]
 
-    #email = params.fetch[:email]
-    @employee = Employee.where(email: sender)
-    #request_body = params.fetch[:request_body]
-    Request.new(email: @employee.email, request_body: body_plain)
+    @employee = Employee.find_by(email: sender)
+    return head(:not_found) unless @employee
 
-    case (body - plain)
-    when "clock in"
-      if Request.save? && @employee.clocked_out?
-        employee.clock_in
-        response = "You have clocked in at #{Time.now}."
-      else
-        response = "You are already clocked in"
-      end
-    when "clock out"
-      if Request.save? && @employee.clocked_in?
-        employee.clock_out
-        response = "You have clocked out at #{Time.now}."
-      else
-        response = "You are already clocked out"
-      end
+    request = Request.new(email: @employee.email, request_body: body_plain)
+    request.save
+
+    response = case body_plain.downcase.strip
+               when "clock in"
+                 handle_clock_in
+               when "clock out"
+                 handle_clock_out
+               else
+                 "Invalid command"
+               end
+
+    render plain: response
+  end
+
+  private
+
+  def handle_clock_in
+    if @employee.clocked_out?
+      @employee.clock_in
+      "You have clocked in at #{Time.now}."
     else
-      response = "Invalid command"
+      "You are already clocked in."
     end
   end
 
-  def remind
+  def handle_clock_out
+    if @employee.clocked_in?
+      @employee.clock_out
+      "You have clocked out at #{Time.now}."
+    else
+      "You are already clocked out."
+    end
   end
 end
