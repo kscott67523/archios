@@ -35,3 +35,9 @@ To start using Archios, follow these steps:
 ### Reporting
 
 Archios provides detailed timesheet reports that can be accessed through the web interface. Simply log in to your account to view and download your reports.
+
+bundle install
+rails assets:precompile
+rails s --p 8080
+ngrok http http://localhost:8080
+

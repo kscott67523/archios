@@ -1,6 +1,6 @@
 # app/controllers/emails_controller.rb
 class EmailsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  #skip_before_action :verify_authenticity_token
 
   def receive
     puts "Received an email: #{params}"
@@ -15,13 +15,13 @@ class EmailsController < ApplicationController
     request.save
 
     response = case body_plain.downcase.strip
-               when "clock in"
-                 handle_clock_in
-               when "clock out"
-                 handle_clock_out
-               else
-                 "Invalid command"
-               end
+      when "clock in"
+        handle_clock_in
+      when "clock out"
+        handle_clock_out
+      else
+        "Invalid command"
+      end
 
     render plain: response
   end
@@ -29,7 +29,7 @@ class EmailsController < ApplicationController
   private
 
   def handle_clock_in
-    if @employee.clocked_out?
+    if !@employee.clocked_in?
       @employee.clock_in
       "You have clocked in at #{Time.now}."
     else
