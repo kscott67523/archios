@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get "emails/receive"
-  post "/incoming_emails", to: "emails#receive"
+  mount Griddler::Engine, at: '/requests'
 
   root "home#index"
 

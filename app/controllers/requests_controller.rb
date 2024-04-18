@@ -6,15 +6,6 @@ class RequestsController < ApplicationController
     @requests = Request.all
   end
 
-  def requests
-    @email = Mail::Message.new(request.body.read)
-    
-    # Extract necessary data from the email object and process it as needed
-    # For example, you might save it to the database or trigger other actions
-    
-    head :ok
-  end
-
   # GET /requests/1 or /requests/1.json
   def show
   end
@@ -30,7 +21,7 @@ class RequestsController < ApplicationController
 
   # POST /requests or /requests.json
   def create
-    @request = Request.new(email: "bob@example.com", request_body: "clock in")
+    @request = Request.new
 
     respond_to do |format|
       if @request.save

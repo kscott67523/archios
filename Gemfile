@@ -86,10 +86,12 @@ gem 'htmlbeautifier'
 gem 'http'
 gem 'sqlite3', '~> 1.4'
 gem 'table_print'
+gem 'griddler'
+gem 'griddler-postmark'
 
 group :development do
   gem 'annotate'
-  # gem 'better_errors'
+  gem 'better_errors'
   gem 'binding_of_caller'
   gem 'draft_generators'
   gem 'grade_runner'

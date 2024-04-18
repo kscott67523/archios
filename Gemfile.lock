@@ -170,8 +170,14 @@ GEM
       octokit (~> 5.0)
       oj (~> 3.13.12)
       rake (~> 13)
+    griddler (1.5.2)
+      htmlentities
+      rails (>= 3.2.0)
+    griddler-postmark (1.0.0)
+      griddler
     hashdiff (1.1.0)
     htmlbeautifier (1.4.3)
+    htmlentities (4.3.4)
     http (5.2.0)
       addressable (~> 2.8)
       base64 (~> 0.1)
@@ -226,7 +232,7 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
-    method_source (1.0.0)
+    method_source (1.1.0)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
     minitest (5.22.3)
@@ -335,10 +341,10 @@ GEM
     react (0.0.2)
       daemons
     redis (4.8.1)
-    redis-client (0.22.0)
+    redis-client (0.22.1)
       connection_pool
     regexp_parser (2.9.0)
-    reline (0.5.1)
+    reline (0.5.2)
       io-console (~> 0.5)
     responders (3.1.1)
       actionpack (>= 5.2)
@@ -369,7 +375,7 @@ GEM
       rspec-mocks (~> 3.12)
       rspec-support (~> 3.12)
     rspec-support (3.13.1)
-    rubocop (1.63.1)
+    rubocop (1.63.2)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
@@ -514,6 +520,8 @@ DEPENDENCIES
   faker
   good_job (~> 3.27)
   grade_runner
+  griddler
+  griddler-postmark
   htmlbeautifier
   http
   image_processing (~> 1.2)
