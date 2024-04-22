@@ -1,5 +1,5 @@
 class TestMailer < ApplicationMailer
-  default from: "t-mail@archios.cloud"
+  default from: "support@archios.cloud"
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -8,9 +8,9 @@ class TestMailer < ApplicationMailer
   def hello
     mail(
       subject: "Hello from Postmark",
-      to: "5b0c75c112b606889bc59936d3427461@inbound.postmarkapp.com",
-      from: "t-mail@archios.cloud",
-      html_body: "clock in",
+      to: "support@archios.cloud",
+      from: "support@archios.cloud",
+      html_body: "received",
       track_opens: "true",
       message_stream: "outbound",
     )
