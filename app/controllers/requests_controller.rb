@@ -22,36 +22,43 @@ class RequestsController < ApplicationController
 
   # POST /requests or /requests.json
   # POST /requests or /requests.json
-# POST /requests or /requests.json
-def create
-  # Parse JSON data from request body
-  request_data = JSON.parse(request.body.read)
+  # POST /requests or /requests.json
+  # POST /requests or /requests.json
+  def create
+    # Parse JSON data from request body
+    request_data = JSON.parse(request.body.read)
 
-  # Extract email and request body from request data
-  email = request_data["From"]
-  request_body = request_data["TextBody"]
+    # Extract email and request body from request data
+    email = request_data["From"]
+    request_body = request_data["TextBody"]
 
-  # Find employee by email
-  employee = Employee.find_by(email: email)
+    # Find employee by email
+    employee = Employee.find_by(email: email)
 
-  if employee.present?
-    # Create a request
-    request = Request.create(email: email, request_body: request_body)
+    if employee.present?
+      # Create a request
+      request = Request.create(email: email, request_body: request_body)
 
-    if request.persisted?
-      # Redirect based on employee's last entry
-      if employee.last_entry.present?
-        redirect_to employee_timesheet_entries_path(employee_id: employee.id, ended_at: Time.now)
+      if request.persisted?
+        # Redirect based on employee's last entry
+        if employee.clocked_in?
+          employee.last_entry.update(ended_at: Time.now)
+        else
+          TimesheetEntry.create(
+            employee_id: employee.id,
+            started_at: Time.now,
+            pay_period_id: PayPeriod.current.id,
+          )
+        end
+
+        render json: { message: "Request processed successfully and timesheet entry created" }, status: :ok
       else
-        redirect_to employee_timesheet_entries_path(employee_id: employee.id, started_at: Time.now)
+        render json: { error: "Failed to create request" }, status: :unprocessable_entity
       end
     else
-      render json: { error: "Failed to create request" }, status: :unprocessable_entity
+      render json: { error: "Employee not found for the given email" }, status: :unprocessable_entity
     end
-  else
-    render json: { error: "Employee not found for the given email" }, status: :unprocessable_entity
   end
-end
 
   # PATCH/PUT /requests/1 or /requests/1.json
   def update
