@@ -13,8 +13,6 @@
   </head>
 
   <body>
-    <%= render partial: "shared/navbar" %>
-    <%= render partial: "shared/side_bar" %>
 
     <div class="container">
       <div class="row mb-4">
@@ -28,7 +26,20 @@
           <% end %>
         </div>
       </div>
-      <%= yield %>
+      <div class="app-container">
+        <%= render partial: "shared/navbar" %>
+        <div class="app-content">
+          <%= render partial: "shared/side_bar" %>
+          <%= yield %>
+        </div>
+      </div>
     </div>
-  </body>
+  </div>
+</div>
+
+<footer>
+
+</footer>
+</div>
+</body>
 </html>
