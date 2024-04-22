@@ -21,19 +21,37 @@ class RequestsController < ApplicationController
   end
 
   # POST /requests or /requests.json
-  def create
-    @request = Request.new
+  # POST /requests or /requests.json
+# POST /requests or /requests.json
+def create
+  # Parse JSON data from request body
+  request_data = JSON.parse(request.body.read)
 
-    respond_to do |format|
-      if @request.save
-        format.html { redirect_to @request, notice: "Request was successfully created." }
-        format.json { render :show, status: :created, location: @request }
+  # Extract email and request body from request data
+  email = request_data["From"]
+  request_body = request_data["TextBody"]
+
+  # Find employee by email
+  employee = Employee.find_by(email: email)
+
+  if employee.present?
+    # Create a request
+    request = Request.create(email: email, request_body: request_body)
+
+    if request.persisted?
+      # Redirect based on employee's last entry
+      if employee.last_entry.present?
+        redirect_to employee_timesheet_entries_path(employee_id: employee.id, ended_at: Time.now)
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @request.errors, status: :unprocessable_entity }
+        redirect_to employee_timesheet_entries_path(employee_id: employee.id, started_at: Time.now)
       end
+    else
+      render json: { error: "Failed to create request" }, status: :unprocessable_entity
     end
+  else
+    render json: { error: "Employee not found for the given email" }, status: :unprocessable_entity
   end
+end
 
   # PATCH/PUT /requests/1 or /requests/1.json
   def update
@@ -58,13 +76,14 @@ class RequestsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_request
-      @request = Request.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def request_params
-      params.require(:request).permit(:email, :request_body)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_request
+    @request = Request.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def request_params
+    params.require(:request).permit(:email, :request_body)
+  end
 end

@@ -1,48 +1,24 @@
-# app/controllers/emails_controller.rb
 class EmailsController < ApplicationController
   #skip_before_action :verify_authenticity_token
 
   def receive
-    puts "Received an email: #{params}"
+    email_params = params[:email]
 
-    sender = params["sender"]
-    body_plain = params["body-plain"]
+    sender = email_params[:from]
+    subject = email_params[:subject]
+    request_body = email_params[:plain_text]
 
-    @employee = Employee.find_by(email: sender)
-    return head(:not_found) unless @employee
+    request = Request.create(
+      sender: sender,
+      request_body: request_body,
+    )
 
-    request = Request.new(email: @employee.email, request_body: body_plain)
-    request.save
-
-    response = case body_plain.downcase.strip
-      when "clock in"
-        handle_clock_in
-      when "clock out"
-        handle_clock_out
-      else
-        "Invalid command"
-      end
-
-    render plain: response
-  end
-
-  private
-
-  def handle_clock_in
-    if !@employee.clocked_in?
-      @employee.clock_in
-      "You have clocked in at #{Time.now}."
+    if request.persisted?
+      # Respond to the email sender or return a response
+      render plain: "Email received and saved successfully"
     else
-      "You are already clocked in."
-    end
-  end
-
-  def handle_clock_out
-    if @employee.clocked_in?
-      @employee.clock_out
-      "You have clocked out at #{Time.now}."
-    else
-      "You are already clocked out."
+      # Handle the case where the record could not be saved
+      render plain: "Error saving email record", status: :unprocessable_entity
     end
   end
 end

@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   root "home#index"
 
   devise_for :employees, controllers: { registrations: "registrations" }
+  
+  resources :employees do
+    resources :timesheet_entries, only: [:create]
+  end
 
   authenticated :employee do
     root to: "employees#show", as: :authenticated_root
