@@ -82,7 +82,7 @@ WORK_HOURS_RANGE = (4..10)
       started_at:,
       ended_at:,
       comments:,
-      entry_approval_status: (ended_at.nil? ? 'pending' : %w[submitted approved rejected].sample),
+      entry_approval_status: submitted,
       pay_period_id: current_pay_period.id
     )
   end
