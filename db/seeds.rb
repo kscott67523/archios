@@ -82,7 +82,7 @@ WORK_HOURS_RANGE = (4..10)
       started_at:,
       ended_at:,
       comments:,
-      entry_approval_status: submitted,
+      entry_approval_status: "approved",
       pay_period_id: current_pay_period.id
     )
   end
