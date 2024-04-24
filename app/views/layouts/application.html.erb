@@ -6,10 +6,9 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= render partial: "shared/cdn_assets" %>
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-    <%= javascript_importmap_tags %>
-    <%= javascript_pack_tag 'application' %>
   </head>
 
   <body>
@@ -30,6 +29,12 @@
       <div class="app-content container-fluid text-center">
         <%= render partial: "shared/side_bar" %>
         <%= yield %>
+        <!-- Include jQuery from CDN -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <%= javascript_importmap_tags %>
+        <%= javascript_include_tag 'tmail' %>
+        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
       </div>
     </div>
   </body>

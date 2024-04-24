@@ -2,4 +2,6 @@
 //= link_directory ../stylesheets .css
 //= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
-  //= link goBack.js
+//= link goBack.js
+//= require bootstrap
+//= link tmail.js

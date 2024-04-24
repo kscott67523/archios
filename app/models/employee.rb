@@ -8,7 +8,7 @@
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  first_name             :string
-#  has_sms                :boolean
+#  has_tmail              :boolean
 #  last_name              :string
 #  phone_number           :string
 #  profile_picture        :string
@@ -58,6 +58,7 @@ class Employee < ApplicationRecord
   has_many :messages, foreign_key: :sender_id
   has_many :employees, class_name: "Employee", foreign_key: "manager_id"
   has_one :status, foreign_key: :employee_id
+  has_one :tmail, class_name: "TmailSubscription", foreign_key: "employee_id"
 
   scope :managers, -> { where(role: roles[:manager]) }
 
@@ -107,6 +108,10 @@ class Employee < ApplicationRecord
 
   def last_entry
     timesheet_entries.last
+  end
+
+  def has_tmail?
+    tmail.present?
   end
 
   private

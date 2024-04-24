@@ -1,37 +1,31 @@
-<div class="container-fluid mt-5">
-  <div class="row justify-content-center">
-    <div class="col-lg-8">
-      <div class="card mb-4">
-        <div class="card-body">
-          <h2 class="card-title text-center mb-4">Welcome, <%= @employee.first_name %>!</h2>
-          <div class="row">
-            <div class="col-md-6 mb-4">
-              <%= render "employee", employee: @employee, dom_id: dom_id(@employee) %>
+<div class="container-fluid p-3">
+  <div id="<%= dom_id(@employee) %>">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body text-center">
+            <div class="media">
+              <%= image_tag("https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_1280.png", alt: "Profile Picture", class: "rounded-circle mb-3 p-2 bg-#{badge_color(@employee&.status&.text)} border border-light rounded-circle", width: 100, height: 100) %>
             </div>
-            <div class="col-md-6 mb-4">
-              <%= render 'statuses/form', status: Status.new(employee_id: @employee.id) %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6 mb-4">
-              <%= render 'timesheet_entries/form', timesheet_entry: @employee.last_entry %>
-            </div>
-            <div class="col-md-6 mb-4">
-              <%= render "timesheet_entries/timesheet_entry", timesheet_entry: @employee.timesheet_entries.last %>
-            </div>
-          </div>
-          <% if current_employee.manager? && current_employee.employees.present? %>
-            <div class="mb-4">
-              <h2 class="card-title mb-3">My Employees</h2>
-              <div class="row row-cols-1 row-cols-md-2 g-4">
-                <% current_employee.employees.each do |employee| %>
-                  <div class="col mb-3">
-                    <%= render "employee", employee: employee %>
-                  </div>
-                <% end %>
+            <div class="media-body">
+              <h2 class="card-title">
+                <%= @employee&.full_name %>
+              </h2>
+              <% if @employee&.manager == current_employee %>
+                <%= render "subordinates", employee: @employee %>
+              <% end %>
+              <hr>
+              <p class="card-text text-muted">
+                <%= @employee&.time_zone %>
+              </p>
+              <p class="card-text">
+                <%= @employee&.role.capitalize %>
+              </p>
+             <%= render "t_mail_status", employee: @employee %>
+                </div>
               </div>
             </div>
-          <% end %>
+          </div>
         </div>
       </div>
     </div>

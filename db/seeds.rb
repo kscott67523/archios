@@ -24,7 +24,7 @@ bob = Employee.create!(
   company_id: company.id,
   manager_id: nil, # Assign the manager id to the first employee
   phone_number: Faker::Number.number(digits: 10),
-  has_sms: [true, false].sample,
+  has_tmail: false,
   profile_picture: Faker::LoremFlickr.image(size: '50x50'), # Using Faker::LoremPixel
   time_zone: Faker::Address.time_zone,
   email: 'bob@example.com',
@@ -38,7 +38,7 @@ alice = Employee.create!(
   company_id: company.id, # Assuming there are 5 companies
   manager_id: bob.id, # Assign the manager id to the first employee
   phone_number: Faker::Number.number(digits: 10),
-  has_sms: [true, false].sample,
+  has_tmail: false,
   profile_picture: Faker::LoremFlickr.image(size: '50x50'),
   time_zone: Faker::Address.time_zone,
   email: 'alice@example.com',
