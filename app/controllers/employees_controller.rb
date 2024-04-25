@@ -9,6 +9,10 @@ class EmployeesController < ApplicationController
   def show
     @employee = current_employee
   end
+  
+  def dashboard
+    @employees = current_employee.employees
+  end
 
   # GET /employees/new
   def new

@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 justify-content-start p-3">
+      <div>
+        <% current_employee.employees.each do |employee| %>
+          <%= render "employee", employee: employee %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

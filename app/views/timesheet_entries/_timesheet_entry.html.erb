@@ -6,6 +6,15 @@
           Most Recent Timesheet
         </div>
         <div class="card-body">
+        <div class="row">
+        <div class="col-md-4">
+        <h5> Current Pay Period Nickname: </h5>
+        <h6> ✨<%= PayPeriod.current.name %>✨ </h6>
+        </div>
+        </div>
+
+        <hr>
+
           <% if timesheet_entry %>
             <div class="accordion-item">
               <h5 class="accordion-header"><%= timesheet_entry.started_at.strftime("%A, %B %d, %Y") %></h5>
@@ -23,16 +32,6 @@
           <% else %>
             <p>-</p>
           <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-header">
-          Hours Worked This Pay Period
-        </div>
-        <div class="card-body">
-          <h1><%= @employee.total_hours_worked.to_f %> hours</h1>
         </div>
       </div>
     </div>

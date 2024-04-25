@@ -5,15 +5,12 @@
         <div class="card">
           <div class="card-body text-center">
             <div class="media">
-              <%= image_tag("https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_1280.png", alt: "Profile Picture", class: "rounded-circle mb-3 p-2 bg-#{badge_color(@employee&.status&.text)} border border-light rounded-circle", width: 100, height: 100) %>
+              <%= image_tag("uifaces-human-image.jpg", alt: "Profile Picture", class: "rounded-circle mb-3 p-2 bg-#{badge_color(@employee&.status&.text)} border border-light rounded-circle", width: 100, height: 100) %>
             </div>
             <div class="media-body">
               <h2 class="card-title">
                 <%= @employee&.full_name %>
               </h2>
-              <% if @employee&.manager == current_employee %>
-                <%= render "subordinates", employee: @employee %>
-              <% end %>
               <hr>
               <h5 class="card-text">
                 <%= @employee&.role.capitalize %>
@@ -35,7 +32,11 @@
                     <%= render "timesheet_entries/form", employee: @employee%>
                     <%= render "statuses/form", employee: @employee%>
                     <%= render "timesheet_entries/timesheet_entry", timesheet_entry: @employee.last_entry %>
-
+                    <div class="card">
+                      <div class="card-header">
+                        <%= render "timesheet_entries/hours_worked", employee: @employee %>
+                      </div>
+                    </div>
                   <% end %>
                 </div>
               </div>

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :messages
   resources :companies
   resources :timesheet_entries, except: [:index]
+  get "employees/:id/dashboard", to: "employees#dashboard", as: :manager_dashboard
   resources :employees
   get "*path", to: "home#index"
 end

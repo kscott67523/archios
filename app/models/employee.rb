@@ -72,7 +72,6 @@ class Employee < ApplicationRecord
       current_timesheet: current_timesheet.map(&:attributes) }
   end
 
-
   def current_timesheet
     today = Date.today
     pp = PayPeriod.current

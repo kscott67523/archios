@@ -4,22 +4,25 @@
       <div class="card">
         <div class="card-body text-center">
           <div class="media">
-            <%= image_tag("https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_1280.png", alt: "Profile Picture", class: "rounded-circle mb-3 p-2 bg-#{badge_color(employee.status&.text)} border border-light rounded-circle", width: 100, height: 100) %>
+            <%= image_tag("#{employee.profile_picture}", alt: "Profile Picture", class: "rounded-circle mb-3 p-2 bg-#{badge_color(employee.status&.text)} border border-light rounded-circle", width: 100, height: 100) %>
           </div>
           <div class="media-body">
-            <h2 class="card-title">
+            <h1 class="card-title">
               <%= employee.full_name %>
-            </h2>
-            <% if employee.manager == current_employee %>
-              <%= render "subordinates", employee: employee %>
-            <% end %>
+            </h1>
+            <p>
+            <%= render "status", employee: employee %>
+            <span class="badge text-bg-<%= badge_color(employee.status.text)%>"><%= employee.status.text %></span>
+            </p>
             <hr>
             <p class="card-text text-muted">
               <%= employee.time_zone %>
             </p>
             <p class="card-text">
-              <%= employee.role.capitalize %>
+             Software Engineer
             </p>
+            <hr>
+            <%= render "timesheet_entries/hours_worked", employee: employee%>
           </div>
         </div>
       </div>

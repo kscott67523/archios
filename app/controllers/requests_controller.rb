@@ -44,13 +44,12 @@ class RequestsController < ApplicationController
         if employee.clocked_in?
           employee.last_entry.update(ended_at: Time.now)
         else
-          TimesheetEntry.create(
+          TimesheetEntry.create!(
             employee_id: employee.id,
             started_at: Time.now,
             pay_period_id: PayPeriod.current.id,
           )
         end
-
         render json: { message: "Request processed successfully and timesheet entry created" }, status: :ok
       else
         render json: { error: "Failed to create request" }, status: :unprocessable_entity
