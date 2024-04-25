@@ -28,7 +28,7 @@ class TimesheetEntriesController < ApplicationController
   def edit
     respond_to do |format|
       format.html
-      format.js {} # This will render edit.js.erb
+      format.js { } # This will render edit.js.erb
     end
   end
 
@@ -46,7 +46,7 @@ class TimesheetEntriesController < ApplicationController
 
     respond_to do |format|
       if @timesheet_entry.save
-        @employee.status.update!(text: "Available")
+        Status.create!(employee_id: @employee.id, text: "Available")
         now = Time.now.strftime("%I:%M %p") # Store the formatted time in the now variable
         format.html { redirect_to employee_path(@employee), notice: "You have clocked in at #{now}" }
         format.json { render :show, status: :created, location: @timesheet_entry }
@@ -63,7 +63,7 @@ class TimesheetEntriesController < ApplicationController
       if @timesheet_entry.update(timesheet_entry_params)
         now = Time.now.strftime("%I:%M %p")
         format.html { redirect_to employee_path(@employee), notice: "You have clocked out at #{now}." }
-        format.js {} # This will render update.js.erb
+        format.js { } # This will render update.js.erb
       else
         format.html { render :edit }
       end

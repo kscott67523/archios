@@ -27,7 +27,6 @@
 #
 class TimesheetEntry < ApplicationRecord
   after_commit :calculate_hours_worked, on: [:update]
-  after_commit :make_unavailable, on: [:update]
 
   enum entry_approval_status: { pending: 'pending', approved: 'approved', rejected: 'rejected' }, _default: :pending
 
@@ -53,10 +52,6 @@ class TimesheetEntry < ApplicationRecord
     duration_hours = duration_seconds.to_f / 3600
     hours_worked = duration_hours.round(2) # Round to two decimal places
     update_columns(hours_worked:, entry_approval_status: 'pending')
-  end
-
-  def make_unavailable
-    employee.status.update!(text: 'Away from Desk')
   end
 
   private

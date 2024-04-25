@@ -15,13 +15,28 @@
                 <%= render "subordinates", employee: @employee %>
               <% end %>
               <hr>
+              <h5 class="card-text">
+                <%= @employee&.role.capitalize %>
+              </h5>
               <p class="card-text text-muted">
                 <%= @employee&.time_zone %>
               </p>
-              <p class="card-text">
-                <%= @employee&.role.capitalize %>
-              </p>
-             <%= render "t_mail_status", employee: @employee %>
+
+              <div class="row">
+                <div class="col-md text-center">
+                  <%= render "t_mail_status", employee: @employee %>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md text-center">
+                  <% if @employee == current_employee %>
+                    <%= render "statuses/status", employee: @employee %>
+                    <%= render "timesheet_entries/form", employee: @employee%>
+                    <%= render "statuses/form", employee: @employee%>
+                    <%= render "timesheet_entries/timesheet_entry", timesheet_entry: @employee.last_entry %>
+
+                  <% end %>
                 </div>
               </div>
             </div>

@@ -38,7 +38,7 @@ Archios provides detailed timesheet reports that can be accessed through the web
 
 bundle install
 
-bundle cacbe 
+bundle cache 
 
 yarn install 
 
