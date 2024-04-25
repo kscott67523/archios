@@ -8,7 +8,6 @@
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  first_name             :string
-#  has_tmail              :boolean
 #  last_name              :string
 #  phone_number           :string
 #  profile_picture        :string
@@ -111,6 +110,6 @@ class Employee < ApplicationRecord
   end
 
   def has_tmail?
-    
+    tmail_subscription.present?
   end
 end
