@@ -52,6 +52,7 @@ current_pay_period = PayPeriod.create!(
   name: Faker::Movies::HarryPotter.spell,
 )
 
+
 # Define a range for the typical work hours in a day
 WORK_HOURS_RANGE = (4..10)
 
