@@ -1,0 +1,22 @@
+<%= form_with(model: tmail_subscription) do |form| %>
+  <% if tmail_subscription.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(tmail_subscription.errors.count, "error") %> prohibited this tmail_subscription from being saved:</h2>
+
+      <ul>
+        <% tmail_subscription.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :employee_id, style: "display: block" %>
+    <%= form.text_field :employee_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :tmail_subscriptions
   mount Griddler::Engine, at: '/requests'
 
   root "home#index"

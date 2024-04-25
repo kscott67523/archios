@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @tmail_subscription %>
+
+<div>
+  <%= link_to "Edit this tmail subscription", edit_tmail_subscription_path(@tmail_subscription) %> |
+  <%= link_to "Back to tmail subscriptions", tmail_subscriptions_path %>
+
+  <%= button_to "Destroy this tmail subscription", @tmail_subscription, method: :delete %>
+</div>

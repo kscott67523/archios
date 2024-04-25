@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Tmail subscriptions</h1>
+
+<div id="tmail_subscriptions">
+  <% @tmail_subscriptions.each do |tmail_subscription| %>
+    <%= render tmail_subscription %>
+    <p>
+      <%= link_to "Show this tmail subscription", tmail_subscription %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New tmail subscription", new_tmail_subscription_path %>
