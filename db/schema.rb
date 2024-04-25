@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_24_182139) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_24_192403) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -118,19 +118,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_24_182139) do
     t.index ["pay_period_id"], name: "index_timesheet_entries_on_pay_period_id"
   end
 
-  create_table "tmail_subscriptions", force: :cascade do |t|
-    t.bigint "employee_id", null: false
-    t.boolean "has_tmail"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["employee_id"], name: "index_tmail_subscriptions_on_employee_id"
-  end
-
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "employees", "companies"
   add_foreign_key "statuses", "employees"
   add_foreign_key "timesheet_entries", "employees"
   add_foreign_key "timesheet_entries", "pay_periods"
-  add_foreign_key "tmail_subscriptions", "employees"
 end

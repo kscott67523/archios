@@ -58,7 +58,7 @@ class Employee < ApplicationRecord
   has_many :messages, foreign_key: :sender_id
   has_many :employees, class_name: "Employee", foreign_key: "manager_id"
   has_one :status, foreign_key: :employee_id
-  has_one :tmail, class_name: "TmailSubscription", foreign_key: "employee_id"
+  has_one :tmail_subscription, class_name: "TmailSubscription", foreign_key: "employee_id"
 
   scope :managers, -> { where(role: roles[:manager]) }
 
@@ -111,12 +111,6 @@ class Employee < ApplicationRecord
   end
 
   def has_tmail?
-    tmail.present?
-  end
-
-  private
-
-  def set_default_has_sms
-    self.has_sms ||= false
+    
   end
 end

@@ -12,7 +12,7 @@
     </button>
     <button class="profile-btn">
       <img src="https://assets.codepen.io/3306515/IMG_2025.jpg" />
-      <span><%= current_employee.first_name || "" %></span>
+      <span><%= current_employee&.first_name || "" %></span>
     </button>
   </div>
   <button class="messages-btn">

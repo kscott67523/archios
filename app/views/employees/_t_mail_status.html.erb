@@ -1,16 +1,5 @@
 <div class="row">
   <div class="col-md">
     <p><%= has_tmail_status(employee) %></p>
-    <div>
-    </div>
-    <% if !employee.has_tmail %>
-      <%= form_with(model: employee, local: false, class: "d-inline-block", remote: true) do |form| %>
-        <%= form.hidden_field :employee.id %>
-        <%= form.hidden_field :photo_id %>
-        <%= form.button type: "submit", class: "btn btn-link" do %>
-          <i class="far fa-heart fa-fw"></i>
-          enable t-mail
-        <% end %>
-      </div>
-    </div>
   </div>
+</div>
