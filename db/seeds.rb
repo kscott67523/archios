@@ -18,7 +18,7 @@ puts "#{Company.count} companies have been created."
 
 # Generate sample data for the employees table
 yoli = Employee.create!(
-  first_name: "Yolii",
+  first_name: "Yoli",
   last_name: Faker::Name.last_name,
   role: :manager,
   company_id: company.id,
