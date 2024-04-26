@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   authenticated :employee do
-    root to: "employees#show", as: :authenticated_root
+    #root to: "employees#show", as: :authenticated_root
     resources :statuses
   end
 

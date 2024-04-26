@@ -1,7 +1,7 @@
-<div class="container-fluid p-3">
+<div class="container-fluid p-5">
   <div id="<%= dom_id(@employee) %>">
     <div class="row justify-content-center">
-      <div class="col-md-6">
+      <div class="col-md-10">
         <div class="card">
           <div class="card-body text-center">
             <div class="media">
@@ -28,13 +28,29 @@
               <div class="row">
                 <div class="col-md text-center">
                   <% if @employee == current_employee %>
-                    <%= render "statuses/status", employee: @employee %>
-                    <%= render "timesheet_entries/form", employee: @employee%>
-                    <%= render "statuses/form", employee: @employee%>
+                    <div class="row">
+                      <div class="col-md text-center">
+                        <%= render "statuses/status", employee: @employee %>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md text-center">
+                        <%= render "timesheet_entries/form", employee: @employee%>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md text-center">
+                        <%= render "statuses/form", employee: @employee%>
+                      </div>
+                    </div>
                     <%= render "timesheet_entries/timesheet_entry", timesheet_entry: @employee.last_entry %>
                     <div class="card">
                       <div class="card-header">
-                        <%= render "timesheet_entries/hours_worked", employee: @employee %>
+                        <div class="row">
+                          <div class="col-md text-center">
+                            <%= render "timesheet_entries/hours_worked", employee: @employee %>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   <% end %>

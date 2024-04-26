@@ -91,7 +91,6 @@ gem 'griddler-postmark'
 
 group :development do
   gem 'annotate'
-  gem 'better_errors'
   gem 'binding_of_caller'
   gem 'draft_generators'
   gem 'grade_runner'
@@ -116,6 +115,8 @@ group :test do
   gem 'rspec-html-matchers'
   gem 'webmock'
 end
+
+gem 'better_errors'
 
 gem 'react', '~> 0.0.2'
 

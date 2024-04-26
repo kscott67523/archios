@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row text-center p-4 mt-5">
     <div class="col-lg-12">
-      <h1 class="display-4">Archios</h1>
+      <h1 class="display-4">archios</h1>
     </div>
     <div class="col-lg-12">
       <p class="lead">Streamline your timesheet management by clocking in over email.</p>
@@ -27,17 +27,18 @@
 
   <div class="row text-center">
     <div class="col-lg-12">
-    <% if current_employee.present? %>
-      <%= link_to "My Dashboard", employee_path(current_employee), class: "btn btn-success btn-lg" %>
-    <% else %>
-      <h2 class="display-5 mb-4">Get started now:</h2>
-    </div>
-    <div class="col-lg-12">
-      <div class="btn-group">
-        <%= link_to "Sign Up", new_employee_registration_path, class: "btn btn-success btn-lg" %>
-        <%= link_to "Sign In", new_employee_session_path, class: "btn btn-outline-secondary btn-lg" %>
+      <h1 class="p-3">Get started now:</h1>
+      <% if current_employee.present? %>
+        <%= link_to "My Dashboard", employee_path(current_employee), class: "btn btn-success btn-lg" %>
+      <% else %>
+        <h2 class="display-5 mb-4">Get started now:</h2>
       </div>
-    </div>
+      <div class="col-lg-12">
+        <div class="btn-group">
+          <%= link_to "Sign Up", new_employee_registration_path, class: "btn btn-success btn-lg" %>
+          <%= link_to "Sign In", new_employee_session_path, class: "btn btn-outline-secondary btn-lg" %>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>

@@ -4,14 +4,14 @@ class EmployeesController < ApplicationController
   before_action :authenticate_employee!
   before_action :set_employee, only: %i[show edit update destroy]
 
-
   # GET /employees/1 or /employees/1.json
   def show
     @employee = current_employee
   end
-  
+
   def dashboard
     @employees = current_employee.employees
+    render :dashboard, employee: current_employee
   end
 
   # GET /employees/new

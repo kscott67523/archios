@@ -1,37 +1,39 @@
 <div class="container-fluid p-3">
   <div class="row">
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-header">
+    <div class="col-md text-center">
+      <div class="card text-center">
+        <div class="card-header text-center">
           Most Recent Timesheet
         </div>
         <div class="card-body">
-        <div class="row">
-        <div class="col-md-4">
-        <h5> Current Pay Period Nickname: </h5>
-        <h6> ✨<%= PayPeriod.current.name %>✨ </h6>
-        </div>
-        </div>
+          <div class="row">
+            <div class="col-md text-center">
+              <h5> Current Pay Period Nickname: </h5>
+              <h6> ✨<%= PayPeriod.current.name %>✨ </h6>
+            </div>
+          </div>
 
-        <hr>
+          <hr>
 
           <% if timesheet_entry %>
-            <div class="accordion-item">
-              <h5 class="accordion-header"><%= timesheet_entry.started_at.strftime("%A, %B %d, %Y") %></h5>
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= timesheet_entry.id %>" aria-expanded="false" aria-controls="collapse<%= timesheet_entry.id %>">
-                <%= timesheet_entry.started_at.strftime("%b %d %l:%M%P") %> - <%= timesheet_entry.ended_at ? timesheet_entry.ended_at.strftime("%l:%M%P") : "Present" %>
-                <span class="badge rounded-pill bg-<%= timesheet_badge_color(timesheet_entry.entry_approval_status) %> ms-2"><%= timesheet_entry.entry_approval_status %></span>
-              </button>
-              <div id="collapse<%= timesheet_entry.id %>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body">
-                  <%= render partial: 'timesheet_entries/form', locals: { timesheet_entry: timesheet_entry } %>
-                  <%= link_to "Delete", timesheet_entry, method: :destroy, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+            <div class="container-fluid text-center">
+              <div class="accordion-item text-center">
+                <h5 class="accordion-header text-center"><%= timesheet_entry.started_at.strftime("%A, %B %d, %Y") %></h5>
+                <button class="accordion-button collapsed text-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= timesheet_entry.id %>" aria-expanded="false" aria-controls="collapse<%= timesheet_entry.id %>">
+                  <%= timesheet_entry.started_at.strftime("%b %d %l:%M%P") %> - <%= timesheet_entry.ended_at ? timesheet_entry.ended_at.strftime("%l:%M%P") : "Present" %>
+                  <span class="badge rounded-pill bg-<%= timesheet_badge_color(timesheet_entry.entry_approval_status) %> ms-2"><%= timesheet_entry.entry_approval_status %></span>
+                </button>
+                <div id="collapse<%= timesheet_entry.id %>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body text-center">
+                    <%= render partial: 'timesheet_entries/form', locals: { timesheet_entry: timesheet_entry } %>
+                    <%= link_to "Delete", timesheet_entry, method: :destroy, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+                  </div>
                 </div>
               </div>
-            </div>
-          <% else %>
-            <p>-</p>
-          <% end %>
+            <% else %>
+              <p>-</p>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
