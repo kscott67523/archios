@@ -33,7 +33,6 @@ class TimesheetEntriesController < ApplicationController
   end
 
   # POST /timesheet_entries or /timesheet_entries.json
-  # POST /timesheet_entries or /timesheet_entries.json
   def create
     @employee = current_employee
     @timesheet_entry = @employee.timesheet_entries.last

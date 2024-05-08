@@ -6,6 +6,7 @@ class CompaniesController < ApplicationController
   # GET /companies or /companies.json
   def index
     @companies = Company.all
+    # what is the purpose of @name ?
     @name = "archios"
   end
 

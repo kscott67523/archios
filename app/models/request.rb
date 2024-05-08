@@ -20,5 +20,6 @@ class Request < ApplicationRecord
 
   # Validations
   validates :request_body, presence: true
+  # delete unused code
   # validates :timesheet_entry_id, presence: true
 end

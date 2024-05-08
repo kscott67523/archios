@@ -1,3 +1,4 @@
+# This controller is not used in the current implementation of the application?? Delete unused code
 class EmailsController < ApplicationController
   #skip_before_action :verify_authenticity_token
 
