@@ -30,6 +30,7 @@
         <%= render partial: "shared/side_bar" %>
         <%= yield %>
         <!-- Include jQuery from CDN -->
+        <%# move this to CDN partial %>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
         <%= javascript_importmap_tags %>

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   devise_for :employees, controllers: { registrations: "registrations" }
-  
+
   resources :employees do
     resources :timesheet_entries, only: [:create]
   end
@@ -17,12 +17,14 @@ Rails.application.routes.draw do
     resources :statuses
   end
 
+  # duplicate routes for statuses
   resources :statuses
   resources :requests
   resources :messages
   resources :companies
   resources :timesheet_entries, except: [:index]
   get "employees/:id/dashboard", to: "employees#dashboard", as: :manager_dashboard
+  # duplicate routes for employees
   resources :employees
   get "*path", to: "home#index"
 end

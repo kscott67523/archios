@@ -21,9 +21,6 @@ class RequestsController < ApplicationController
   end
 
   # POST /requests or /requests.json
-  # POST /requests or /requests.json
-  # POST /requests or /requests.json
-  # POST /requests or /requests.json
   def create
     # Parse JSON data from request body
     request_data = JSON.parse(request.body.read)
